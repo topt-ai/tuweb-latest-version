@@ -44,17 +44,20 @@ export default function App() {
       // Services stagger
       if (servicesRef.current) {
         const cards = servicesRef.current.querySelectorAll('.service-card');
-        gsap.from(cards, {
-          x: 30,
-          opacity: 0,
-          stagger: 0.1,
-          duration: 0.7,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: servicesRef.current,
-            start: 'top 70%',
+        gsap.fromTo(cards,
+          { x: 30, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 0.7,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: servicesRef.current,
+              start: 'top 70%',
+            }
           }
-        });
+        );
       }
 
       // Results counters
@@ -130,7 +133,37 @@ export default function App() {
           }
         });
       });
+
+      // Transition Section
+      const transitionSection = document.getElementById('transition-section');
+      if (transitionSection) {
+        const words1 = transitionSection.querySelectorAll('.word-line-1');
+        const words2 = transitionSection.querySelectorAll('.word-line-2');
+        
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: transitionSection,
+            start: 'top 75%',
+          }
+        });
+
+        if (words1.length) {
+          tl.fromTo(words1, 
+            { y: 60, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.08, duration: 0.8, ease: 'power3.out' },
+            0
+          );
+        }
+        if (words2.length) {
+          tl.fromTo(words2,
+            { y: 60, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.08, duration: 0.8, ease: 'power3.out' },
+            0.2
+          );
+        }
+      }
     });
+
 
     return () => ctx.revert();
   }, []);
@@ -202,17 +235,17 @@ export default function App() {
           <path d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.6,-46.3C91.4,-33.5,98,-18,97.7,-2.7C97.4,12.6,90.2,27.7,80.6,40.4C71,53.1,59,63.4,45.4,71.4C31.8,79.4,16.6,85.1,0.8,83.7C-15,82.3,-30,73.8,-43.3,64.7C-56.6,55.6,-68.2,45.9,-76.4,33.5C-84.6,21.1,-89.4,6,-87.6,-8.4C-85.8,-22.8,-77.4,-36.5,-66.6,-47.2C-55.8,-57.9,-42.6,-65.6,-29.4,-72.1C-16.2,-78.6,-3,-83.9,10.6,-84.9C24.2,-85.9,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
         </svg>
 
-        <div className="absolute bottom-[12vh] left-[8%] w-[84%] max-w-[1200px]">
-          <div className="hero-anim font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6">
+        <div className="absolute top-[45%] -translate-y-1/2 left-[8%] w-[84%] max-w-[1200px]">
+          <div className="hero-anim font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
             // Agencia de Marketing · San Salvador, El Salvador
           </div>
           <h1 className="hero-anim font-sans font-bold text-[clamp(52px,7vw,84px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
             Tu próximo cliente
           </h1>
-          <h1 className="hero-anim font-serif italic text-[clamp(52px,7vw,84px)] leading-[1.0] tracking-[-0.03em] text-[var(--green)] mb-6">
+          <h1 className="hero-anim font-serif italic text-[clamp(52px,7vw,84px)] leading-[1.0] tracking-[-0.03em] text-[var(--green)] mb-4">
             ya te está buscando.
           </h1>
-          <p className="hero-anim font-sans font-light text-[19px] text-[var(--muted)] max-w-[520px] leading-[1.65] mb-10">
+          <p className="hero-anim font-sans font-light text-[19px] text-[var(--muted)] max-w-[520px] leading-[1.65] mb-8">
             Ayudamos a negocios en El Salvador a aparecer en Google, dominar su zona, y convertir visitas en clientes reales.
           </p>
           <div className="hero-anim flex flex-wrap items-center gap-6">
@@ -226,38 +259,35 @@ export default function App() {
         </div>
 
         {/* Stat Strip */}
-        <div className="absolute bottom-0 left-0 w-full border-t border-[rgba(26,26,24,0.1)] px-[8%] py-[18px] bg-[var(--bg)]">
-          <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-0 max-w-[1200px] mx-auto">
-            <div className="flex-1 md:border-r border-[rgba(26,26,24,0.1)] md:pr-6 flex items-baseline gap-3">
-              <span className="font-mono text-[32px] text-[var(--green)]">+150</span>
-              <span className="font-sans font-light text-[13px] text-[var(--muted)]">negocios posicionados</span>
-            </div>
-            <div className="flex-1 md:border-r border-[rgba(26,26,24,0.1)] md:px-6 flex items-baseline gap-3">
+        <div className="absolute bottom-[44px] left-0 w-full border-t border-[rgba(26,26,24,0.1)] px-[8%] py-[14px] bg-[var(--bg)] z-10">
+          <div className="flex flex-col md:flex-row md:items-center justify-center gap-6 md:gap-16 max-w-[900px] mx-auto">
+            <div className="flex items-baseline gap-3">
               <span className="font-mono text-[32px] text-[var(--terra)]">90 días</span>
               <span className="font-sans font-light text-[13px] text-[var(--muted)]">tiempo promedio para top 3</span>
             </div>
-            <div className="flex-1 md:pl-6 flex items-baseline gap-3">
+            <div className="hidden md:block w-px h-10 bg-[rgba(26,26,24,0.1)]"></div>
+            <div className="flex items-baseline gap-3">
               <span className="font-mono text-[18px] text-[var(--green)]">El Salvador</span>
               <span className="font-sans font-light text-[13px] text-[var(--muted)]">enfoque 100% local</span>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* SECTION C: TICKER */}
-      <section className="w-full bg-[var(--dark)] text-[#F5F0E8] h-[44px] overflow-hidden flex items-center">
-        <div className="flex whitespace-nowrap animate-marquee">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex items-center font-sans font-medium text-[12px] uppercase tracking-[0.1em]">
-              <span className="mx-4">SEO LOCAL</span><span className="text-[var(--terra)]">&middot;</span>
-              <span className="mx-4">GOOGLE ADS</span><span className="text-[var(--terra)]">&middot;</span>
-              <span className="mx-4">FACEBOOK ADS</span><span className="text-[var(--terra)]">&middot;</span>
-              <span className="mx-4">INSTAGRAM ADS</span><span className="text-[var(--terra)]">&middot;</span>
-              <span className="mx-4">PÁGINAS WEB</span><span className="text-[var(--terra)]">&middot;</span>
-              <span className="mx-4">POSICIONAMIENTO LOCAL</span><span className="text-[var(--terra)]">&middot;</span>
-              <span className="mx-4">CONSULTA GRATIS</span><span className="text-[var(--terra)]">&middot;</span>
-            </div>
-          ))}
+        
+        {/* SECTION C: TICKER */}
+        <div className="absolute bottom-0 left-0 w-full bg-[var(--dark)] text-[#F5F0E8] h-[44px] overflow-hidden flex items-center z-10">
+          <div className="flex whitespace-nowrap animate-marquee">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="flex items-center font-sans font-medium text-[12px] uppercase tracking-[0.1em]">
+                <span className="mx-4">SEO LOCAL</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">GOOGLE ADS</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">FACEBOOK ADS</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">INSTAGRAM ADS</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">PÁGINAS WEB</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">POSICIONAMIENTO LOCAL</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">CONSULTA GRATIS</span><span className="text-[var(--terra)]">&middot;</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -305,20 +335,19 @@ export default function App() {
       {/* SECTION E: RESULTS */}
       <section ref={resultsRef} className="bg-[var(--dark)] py-[120px] px-[8%]">
         <div className="max-w-[1200px] mx-auto">
+          <div className="scroll-reveal font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6">
+            // Resultados
+          </div>
           <h2 className="scroll-reveal font-serif italic text-[clamp(36px,4vw,52px)] leading-[1.1] text-[var(--bg)] mb-20 max-w-[800px]">
             "Resultados que se miden en clientes, no en clics."
           </h2>
 
-          <div className="flex flex-col md:flex-row border-t border-b border-[rgba(245,240,232,0.15)] md:border-b-0 md:border-t-0">
-            <div className="flex-1 py-8 md:py-0 md:border-r border-[rgba(245,240,232,0.15)] md:pr-8 flex flex-col justify-center">
-              <div className="font-mono text-[72px] text-[var(--terra)] leading-none mb-4 stat-counter" data-target="150">0</div>
-              <div className="font-sans font-light text-[15px] text-[rgba(245,240,232,0.7)]">Negocios posicionados en El Salvador</div>
-            </div>
-            <div className="flex-1 py-8 md:py-0 border-t md:border-t-0 md:border-r border-[rgba(245,240,232,0.15)] md:px-8 flex flex-col justify-center">
+          <div className="flex flex-col md:flex-row md:justify-center border-t border-b border-[rgba(245,240,232,0.15)] md:border-b-0 md:border-t-0 max-w-[800px] mx-auto">
+            <div className="flex-1 py-8 md:py-0 md:border-r border-[rgba(245,240,232,0.15)] md:px-8 flex flex-col items-center justify-center text-center">
               <div className="font-mono text-[72px] text-[var(--bg)] leading-none mb-4">Top 3</div>
               <div className="font-sans font-light text-[15px] text-[rgba(245,240,232,0.7)]">Posición promedio en Google Maps</div>
             </div>
-            <div className="flex-1 py-8 md:py-0 border-t md:border-t-0 md:pl-8 flex flex-col justify-center">
+            <div className="flex-1 py-8 md:py-0 border-t md:border-t-0 md:px-8 flex flex-col items-center justify-center text-center">
               <div className="font-mono text-[72px] text-[var(--terra)] leading-none mb-4 stat-counter" data-target="90">0</div>
               <div className="font-sans font-light text-[15px] text-[rgba(245,240,232,0.7)]">Tiempo promedio para ver resultados</div>
             </div>
@@ -383,7 +412,7 @@ export default function App() {
 
       {/* SECTION G: PROCESS */}
       <section ref={processRef} className="py-[120px] px-[8%] border-t border-[rgba(26,26,24,0.08)] max-w-[1440px] mx-auto">
-        <div className="scroll-reveal font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6">
+        <div className="font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6 opacity-100">
           // 002 &middot; Proceso
         </div>
         <h2 className="scroll-reveal text-[clamp(36px,4vw,52px)] leading-[1.1] mb-20">
@@ -413,45 +442,45 @@ export default function App() {
 
       {/* SECTION H: TOMMY */}
       <section id="nosotros" className="py-[120px] px-[8%] border-t border-[rgba(26,26,24,0.08)] max-w-[1440px] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-[80px]">
-          <div className="lg:w-[44%] scroll-reveal">
+        <div className="flex flex-col lg:flex-row gap-[80px] items-center">
+          <div className="lg:w-[40%] scroll-reveal">
             <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" 
+              src="/tommy_new.png" 
               alt="Tommy - Fundador de TuWebSV" 
-              className="w-full h-full min-h-[400px] object-cover rounded-[16px]"
+              className="w-full h-auto max-h-[500px] object-cover rounded-[16px] shadow-[0_4px_30px_rgba(26,26,24,0.1)]"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="lg:w-[56%] flex flex-col justify-center">
+          <div className="lg:w-[60%] flex flex-col justify-center">
             <div className="scroll-reveal font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6">
-              // El fundador
+              // EL QUE HACE EL TRABAJO
             </div>
             <h2 className="scroll-reveal font-sans font-bold text-[44px] leading-[1.1] text-[var(--text)]">
               Soy Tommy.
             </h2>
             <h2 className="scroll-reveal font-serif italic text-[44px] leading-[1.1] text-[var(--green)] mb-8">
-              Conmigo hablas. Yo hago el trabajo.
+              Tú hablas conmigo. Yo hago el trabajo.
             </h2>
             
             <p className="scroll-reveal font-sans font-light text-[17px] text-[var(--muted)] leading-[1.65] mb-6">
-              Fundé TuWebSV porque vi cómo agencias genéricas cobraban mucho y entregaban poco. Trabajo directamente con cada cliente — sin intermediarios, sin juniors que no conocen tu negocio.
+              Arranqué TuWebSV porque quería ayudar a negocios locales de forma directa, sin fantasía ni tecnicismos. La mayoría de agencias te presentan soluciones extensas que terminan agregándole más estrés al dueño del negocio, lo he visto de primera mano. Me gusta trabajar bien, sin complicaciones innecesarias, y la mayoría de resultados se logran en la mitad del tiempo que cualquier agencia propone.
             </p>
             <p className="scroll-reveal font-sans font-light text-[17px] text-[var(--muted)] leading-[1.65] mb-10">
-              Si me contratas, trabajas conmigo. Así de simple.
+              Y algo más: no voy a prometerte cosas que no puedo cumplir. Antes de arrancar, evalúo si somos buen fit. Si no lo somos, te lo digo directo y te doy mis recomendaciones sin costo. Sin presión, sin cobrar por gusto.
             </p>
 
             <ul className="scroll-reveal flex flex-col gap-4 mb-10">
               <li className="font-sans font-medium text-[15px] text-[var(--text)] flex items-start gap-3">
                 <span className="text-[var(--terra)]">&ndash;</span>
-                <span>Resultados reales — me mido por clientes ganados, no por reportes bonitos.</span>
+                <span>Sin tecnicismos ni reportes que nadie entiende.</span>
               </li>
               <li className="font-sans font-medium text-[15px] text-[var(--text)] flex items-start gap-3">
                 <span className="text-[var(--terra)]">&ndash;</span>
-                <span>Sin contratos largos — confío en mi trabajo. No necesito atarte.</span>
+                <span>Sin contratos largos. Si funciona, seguimos trabajando.</span>
               </li>
               <li className="font-sans font-medium text-[15px] text-[var(--text)] flex items-start gap-3">
                 <span className="text-[var(--terra)]">&ndash;</span>
-                <span>Comunicación directa — respondo yo. Siempre.</span>
+                <span>Te respondo yo. Siempre.</span>
               </li>
             </ul>
 
@@ -460,6 +489,34 @@ export default function App() {
                 Conoce más sobre mí &rarr;
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION H2: TRANSITION */}
+      <section id="transition-section" className="bg-[#1A1A18] py-[140px] px-[8%] text-center overflow-hidden flex flex-col items-center justify-center">
+        <h2 className="font-serif italic font-normal text-[clamp(32px,4vw,64px)] text-[rgba(245,240,232,0.4)] leading-[1.2] flex flex-wrap justify-center gap-x-[0.25em] gap-y-2">
+          {"La mayoría de agencias te venden fantasía.".split(" ").map((word, i) => (
+            <span key={i} className="inline-block overflow-hidden py-1">
+              <span className="inline-block word-line-1 opacity-0 translate-y-[60px]">{word}</span>
+            </span>
+          ))}
+        </h2>
+        
+        <div className="w-full max-w-[200px] mx-auto my-[32px] border-t border-[rgba(245,240,232,0.1)]"></div>
+        
+        <div className="flex flex-col items-center text-center">
+          <div className="inline-flex flex-col items-end">
+            <h2 className="font-serif italic font-bold text-[clamp(48px,7vw,96px)] text-[#F5F0E8] leading-[1.1] flex flex-wrap justify-center gap-x-[0.28em] gap-y-2">
+              {"Nosotros te traemos clientes.".split(" ").map((word, i) => (
+                <span key={`w2-${i}`} className="inline-block overflow-hidden py-1">
+                  <span className="inline-block word-line-2 opacity-0 translate-y-[60px]">{word}</span>
+                </span>
+              ))}
+            </h2>
+            <span className="relative mt-2 md:-mt-2 mr-0 md:mr-[0.5em] font-sans font-light text-[15px] text-[rgba(245,240,232,0.4)] whitespace-nowrap">
+              Para negocios que van en serio.
+            </span>
           </div>
         </div>
       </section>
@@ -480,17 +537,19 @@ export default function App() {
             {
               title: "The Tooth Boutique",
               desc: "Sitio web dental con sistema de selfie post-tratamiento.",
-              img: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600"
+              img: "/project_tooth.png",
+              hoverImg: "/project_selfietooth.png",
+              link: "https://www.thetoothboutique.com/"
             },
             {
-              title: "Proyecto Local SEO",
-              desc: "Posicionamiento top 3 para negocio de servicios en San Salvador.",
-              img: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600"
+              title: "VOID",
+              desc: "agencia de marketing y desempeño",
+              img: "/project_void2.png"
             },
             {
-              title: "Campaña Google Ads",
-              desc: "Campaña de conversión con 4.2x ROAS en primer mes.",
-              img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600"
+              title: "Top Google Places",
+              desc: "The Tooth Boutique de las primeras opciones al buscar clinicas de ortodoncia en San Salvador.",
+              img: "/project_mapstooth.png"
             }
           ].map((project, idx) => (
             <div key={idx} className="group min-w-[320px] md:min-w-[380px] snap-start rounded-[16px] overflow-hidden bg-[var(--surface)] shadow-[0_2px_20px_rgba(26,26,24,0.06)] hover:shadow-[0_12px_40px_rgba(26,26,24,0.12)] transition-all duration-300 hover:-translate-y-[4px] border border-[rgba(26,26,24,0.05)]">
@@ -501,16 +560,23 @@ export default function App() {
                 <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
               </div>
               {/* Image */}
-              <div className="h-[220px] w-full overflow-hidden">
-                <img src={project.img} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
+              <div className="relative h-[220px] w-full overflow-hidden bg-[#F5F5F5]">
+                <img src={project.img} alt={project.title} className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${project.hoverImg ? 'group-hover:opacity-0' : ''}`} referrerPolicy="no-referrer" />
+                {project.hoverImg && (
+                  <img src={project.hoverImg} alt={`${project.title} hover`} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105" referrerPolicy="no-referrer" />
+                )}
               </div>
               {/* Info */}
               <div className="p-6">
                 <h3 className="font-sans font-bold text-[18px] text-[var(--text)] mb-2">{project.title}</h3>
                 <p className="font-sans font-light text-[14px] text-[var(--muted)] mb-6">{project.desc}</p>
-                <div className="font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.05em]">
-                  Ver proyecto &rarr;
-                </div>
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noreferrer" className="inline-block font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.05em] hover:underline">
+                    Ver proyecto &rarr;
+                  </a>
+                ) : (
+                  <div className="h-[16px]"></div>
+                )}
               </div>
             </div>
           ))}
@@ -537,6 +603,10 @@ export default function App() {
             data-url="https://calendly.com/tommy-tuwebsv/30min?hide_gdpr_banner=1"
             style={{ minWidth: '320px', height: '700px' }}
           />
+        </div>
+        
+        <div className="text-center mt-6">
+          <p className="font-sans font-medium text-[15px] text-[var(--muted)]">Shall we begin?</p>
         </div>
       </section>
 
@@ -651,8 +721,8 @@ export default function App() {
             <div>
               <h4 className="font-sans font-medium text-[16px] text-[var(--bg)] mb-6">Contacto</h4>
               <ul className="flex flex-col gap-3">
-                <li className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">hola@tuwebsv.com</li>
-                <li className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">+503 7201 8215</li>
+                <li className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]"><a href="mailto:hola@tuwebsv.com" className="hover:text-[#F5F0E8] transition-colors">hola@tuwebsv.com</a></li>
+                <li className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]"><a href="https://wa.me/50372018215" target="_blank" rel="noreferrer" className="hover:text-[#F5F0E8] transition-colors">+503 7201 8215</a></li>
                 <li className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">Lun–Sáb 8:00–18:00</li>
               </ul>
             </div>
@@ -665,17 +735,6 @@ export default function App() {
             </div>
             <div className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">
               Creada con orgullo en El Salvador 🇸🇻
-            </div>
-            <div className="flex items-center gap-4">
-              <a href="#" className="text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href="#" className="text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">
-                <Facebook size={18} />
-              </a>
-              <a href="https://wa.me/50372018215" target="_blank" rel="noreferrer" className="text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">
-                <MessageCircle size={18} />
-              </a>
             </div>
           </div>
         </div>
