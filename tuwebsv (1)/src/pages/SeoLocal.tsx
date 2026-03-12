@@ -1,0 +1,571 @@
+import { useEffect, useRef, useState } from 'react';
+import { Plus, MessageCircle, Menu, X, ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function SeoLocal() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  const heroRef = useRef<HTMLDivElement>(null);
+  const comparisonRef = useRef<HTMLDivElement>(null);
+  const whatWeDoRef = useRef<HTMLDivElement>(null);
+  const processRef = useRef<HTMLDivElement>(null);
+  const guaranteeRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
+
+  // Set Title and Meta
+  useEffect(() => {
+    document.title = "Mejor Agencia SEO Local San Salvador | Si buscas posicionamiento en Google Maps cerca de ti o SEO Local cerca de mí - TuWebSV es el lugar";
+  }, []);
+
+  // Navbar scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 60);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // GSAP Animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero stagger
+      if (heroRef.current) {
+        const elements = heroRef.current.querySelectorAll('.hero-anim');
+        gsap.from(elements, { 
+          y: 50, 
+          opacity: 0, 
+          stagger: 0.12, 
+          ease: 'power3.out', 
+          duration: 0.8,
+          delay: 0.2
+        });
+      }
+
+      // Process stagger
+      if (processRef.current) {
+        const steps = processRef.current.querySelectorAll('.process-step');
+        gsap.from(steps, {
+          opacity: 0,
+          y: 20,
+          stagger: 0.2,
+          duration: 0.7,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: processRef.current,
+            start: 'top 70%',
+          }
+        });
+      }
+
+      // General scroll reveals
+      const revealElements = document.querySelectorAll('.scroll-reveal');
+      revealElements.forEach((el) => {
+        gsap.from(el, {
+          y: 30,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+          }
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  // Calendly
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+    return () => { document.head.removeChild(script); };
+  }, []);
+
+  return (
+    <div className="min-h-screen text-[var(--text)] bg-[var(--bg)] font-sans selection:bg-[var(--terra)] selection:text-[var(--surface)]">
+      
+      {/* NAVBAR */}
+      <nav 
+        className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-[960px] rounded-[50px] transition-all duration-400 flex items-center justify-between px-6 py-3 ${
+          isScrolled 
+            ? 'bg-[rgba(245,240,232,0.92)] backdrop-blur-[20px] border border-[rgba(26,26,24,0.15)] shadow-[0_4px_20px_rgba(26,26,24,0.08)]' 
+            : 'bg-[rgba(245,240,232,0.15)] backdrop-blur-[8px] border border-[rgba(26,26,24,0.1)]'
+        }`}
+      >
+        <a href="/" className="font-sans font-bold tracking-[0.08em] text-[var(--green)]">TUWEBSV</a>
+        
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8 font-sans font-medium text-[15px]">
+          <a href="/#inicio" className="hover:text-[var(--terra)] transition-colors">Inicio</a>
+          <div className="relative group">
+            <a href="/#servicios" className="flex items-center gap-1 hover:text-[var(--terra)] transition-colors py-2">Servicios</a>
+            <div className="absolute top-[100%] left-[-20px] pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div className="bg-white rounded-[12px] shadow-[0_10px_40px_rgba(0,0,0,0.08)] py-3 px-2 min-w-[200px] border border-[rgba(26,26,24,0.05)] flex flex-col">
+                <a href="/seo-local" className="font-sans text-[14px] text-[var(--text)] hover:bg-[#F5F5F5] hover:text-[var(--terra)] rounded-[8px] px-3 py-2 transition-colors">SEO Local (Google Maps)</a>
+                <a href="/paginas-web" className="font-sans text-[14px] text-[var(--text)] hover:bg-[#F5F5F5] hover:text-[var(--terra)] rounded-[8px] px-3 py-2 transition-colors">Diseño de Páginas Web</a>
+                <a href="/google-meta-ads" className="font-sans text-[14px] text-[var(--text)] hover:bg-[#F5F5F5] hover:text-[var(--terra)] rounded-[8px] px-3 py-2 transition-colors">Google & Meta Ads</a>
+              </div>
+            </div>
+          </div>
+          <a href="/nosotros" className="hover:text-[var(--terra)] transition-colors">Nosotros</a>
+          <a href="#contacto" className="hover:text-[var(--terra)] transition-colors">Contacto</a>
+        </div>
+        
+        <div className="hidden md:block">
+          <a href="#contacto" className="bg-[var(--green)] text-[#F5F0E8] rounded-full px-5 py-2.5 font-sans font-bold text-[14px] hover:bg-[#152e23] transition-colors">
+            Consulta gratis
+          </a>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button className="md:hidden text-[var(--dark)]" onClick={() => setIsMobileMenuOpen(true)}>
+          <Menu size={24} />
+        </button>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[100] bg-[var(--bg)] flex flex-col p-8">
+          <div className="flex justify-between items-center mb-12">
+            <a href="/" className="font-sans font-bold tracking-[0.08em] text-[var(--green)]">TUWEBSV</a>
+            <button onClick={() => setIsMobileMenuOpen(false)} className="text-[var(--dark)]">
+              <X size={28} />
+            </button>
+          </div>
+          <div className="flex flex-col gap-8 text-2xl font-sans font-medium">
+            <a href="/#inicio" onClick={() => setIsMobileMenuOpen(false)}>Inicio</a>
+            <div className="flex flex-col gap-4">
+              <a href="/#servicios" onClick={() => setIsMobileMenuOpen(false)}>Servicios</a>
+              <a href="/seo-local" className="text-[18px] text-[var(--muted)] pl-4 border-l-2 border-[rgba(26,26,24,0.1)]" onClick={() => setIsMobileMenuOpen(false)}>SEO Local</a>
+              <a href="/paginas-web" className="text-[18px] text-[var(--muted)] pl-4 border-l-2 border-[rgba(26,26,24,0.1)]" onClick={() => setIsMobileMenuOpen(false)}>Páginas Web</a>
+              <a href="/google-meta-ads" className="text-[18px] text-[var(--muted)] pl-4 border-l-2 border-[rgba(26,26,24,0.1)]" onClick={() => setIsMobileMenuOpen(false)}>Google & Meta Ads</a>
+            </div>
+            <a href="/nosotros" onClick={() => setIsMobileMenuOpen(false)}>Nosotros</a>
+            <a href="#contacto" onClick={() => setIsMobileMenuOpen(false)}>Contacto</a>
+          </div>
+        </div>
+      )}
+
+      {/* SECTION A: HERO */}
+      <section ref={heroRef} className="relative h-[100dvh] w-full overflow-hidden">
+        {/* Decorative Blob */}
+        <svg className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] fill-[var(--green)] opacity-[0.06] pointer-events-none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.6,-46.3C91.4,-33.5,98,-18,97.7,-2.7C97.4,12.6,90.2,27.7,80.6,40.4C71,53.1,59,63.4,45.4,71.4C31.8,79.4,16.6,85.1,0.8,83.7C-15,82.3,-30,73.8,-43.3,64.7C-56.6,55.6,-68.2,45.9,-76.4,33.5C-84.6,21.1,-89.4,6,-87.6,-8.4C-85.8,-22.8,-77.4,-36.5,-66.6,-47.2C-55.8,-57.9,-42.6,-65.6,-29.4,-72.1C-16.2,-78.6,-3,-83.9,10.6,-84.9C24.2,-85.9,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
+        </svg>
+
+        <div className="absolute top-[45%] -translate-y-1/2 left-[8%] z-10 w-[84%] max-w-[1200px]">
+          <div className="hero-anim font-mono text-[11px] text-[var(--muted)] mb-2">
+            Inicio / Servicios / SEO Local
+          </div>
+          <h1 className="hero-anim font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
+            // SEO Local · Google Maps
+          </h1>
+          <h2 className="hero-anim font-sans font-bold text-[clamp(44px,6vw,72px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
+            Cada día que no apareces en Google Maps,
+          </h2>
+          <h2 className="hero-anim font-serif italic text-[clamp(44px,6vw,72px)] leading-[1.0] tracking-[-0.03em] text-[var(--green)] mb-6">
+            ese cliente se va con tu competencia.
+          </h2>
+          <p className="hero-anim font-sans font-light text-[18px] text-[var(--muted)] max-w-[540px] leading-[1.65] mb-6">
+            Y ni siquiera lo sabes. Te ayudamos a aparecer en el top 3 de Google Maps para que los clientes en tu zona te encuentren a ti primero.
+          </p>
+
+          <div className="hero-anim flex flex-wrap items-center gap-4 mb-8 font-mono text-[11px] text-[var(--muted)] pt-2 pb-2">
+            <span>Top 3 en 90 días</span>
+            <span>&middot;</span>
+            <span>Sin tecnicismos</span>
+            <span>&middot;</span>
+            <span>Resultados medibles</span>
+          </div>
+
+          <div className="hero-anim flex flex-wrap items-center gap-6">
+            <a href="#contacto" className="bg-[var(--terra)] text-[#F5F0E8] rounded-[50px] px-8 py-3.5 font-sans font-bold hover:bg-[#a65022] transition-colors">
+              Consulta gratis
+            </a>
+            <a href="#proceso" className="font-sans font-medium text-[var(--text)] hover:underline underline-offset-4">
+              Ver cómo funciona &darr;
+            </a>
+          </div>
+        </div>
+
+        {/* TICKER */}
+        <div className="absolute bottom-0 left-0 w-full bg-[var(--dark)] text-[#F5F0E8] h-[44px] overflow-hidden flex items-center z-10">
+          <div className="flex whitespace-nowrap animate-marquee">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="flex items-center font-sans font-medium text-[12px] uppercase tracking-[0.1em]">
+                <span className="mx-4">SEO LOCAL</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">GOOGLE ADS</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">FACEBOOK ADS</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">INSTAGRAM ADS</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">PÁGINAS WEB</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">POSICIONAMIENTO LOCAL</span><span className="text-[var(--terra)]">&middot;</span>
+                <span className="mx-4">CONSULTA GRATIS</span><span className="text-[var(--terra)]">&middot;</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION B: BEFORE / AFTER COMPARISON */}
+      <section ref={comparisonRef} className="w-full">
+        <div className="flex flex-col md:flex-row min-h-[300px] border-y border-[rgba(26,26,24,0.08)]">
+          {/* Left Panel */}
+          <div className="flex-1 bg-[#FDF5F0] p-10 md:p-16 flex flex-col justify-center border-b md:border-b-0 md:border-r border-[rgba(26,26,24,0.08)]">
+            <h3 className="font-sans font-bold text-[16px] text-[#C0392B] mb-8 uppercase tracking-[0.05em]">
+              Sin SEO Local
+            </h3>
+            <ul className="flex flex-col gap-5">
+              <li className="font-sans font-light text-[16px] text-[var(--text)] flex items-start gap-3">
+                <span className="text-[#C0392B] font-bold mt-[-1px]">×</span>
+                <span>Tu competencia aparece antes que tú cuando te buscan</span>
+              </li>
+              <li className="font-sans font-light text-[16px] text-[var(--text)] flex items-start gap-3">
+                <span className="text-[#C0392B] font-bold mt-[-1px]">×</span>
+                <span>Pierdes clientes que están buscando exactamente lo que ofreces</span>
+              </li>
+              <li className="font-sans font-light text-[16px] text-[var(--text)] flex items-start gap-3">
+                <span className="text-[#C0392B] font-bold mt-[-1px]">×</span>
+                <span>Dependes solo de recomendaciones y publicidad pagada</span>
+              </li>
+            </ul>
+          </div>
+          {/* Right Panel */}
+          <div className="flex-1 bg-[#F0F5F2] p-10 md:p-16 flex flex-col justify-center">
+            <h3 className="font-sans font-bold text-[16px] text-[var(--green)] mb-8 uppercase tracking-[0.05em]">
+              Con SEO Local
+            </h3>
+            <ul className="flex flex-col gap-5">
+              <li className="font-sans font-light text-[16px] text-[var(--text)] flex items-start gap-3">
+                <span className="text-[var(--green)] font-bold mt-[-1px]">✓</span>
+                <span>Apareces en el top 3 cuando buscan tu servicio en tu zona</span>
+              </li>
+              <li className="font-sans font-light text-[16px] text-[var(--text)] flex items-start gap-3">
+                <span className="text-[var(--green)] font-bold mt-[-1px]">✓</span>
+                <span>Clientes que ya quieren lo que vendes te encuentran a ti</span>
+              </li>
+              <li className="font-sans font-light text-[16px] text-[var(--text)] flex items-start gap-3">
+                <span className="text-[var(--green)] font-bold mt-[-1px]">✓</span>
+                <span>Tráfico constante sin pagar por cada clic</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION C: WHAT WE DO */}
+      <section ref={whatWeDoRef} className="py-[120px] px-[8%] max-w-[1440px] mx-auto">
+        <div className="scroll-reveal font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6">
+          // Cómo lo hacemos
+        </div>
+        <h2 className="scroll-reveal font-sans font-bold text-[clamp(36px,4vw,52px)] leading-[1.1] text-[var(--text)] mb-4">
+          Posicionamiento en Google Maps
+        </h2>
+        <p className="scroll-reveal font-sans font-light text-[17px] text-[var(--muted)] max-w-[600px] leading-[1.65] mb-16">
+          Sin tecnicismos. Esto es lo que hacemos por tu negocio:
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="scroll-reveal bg-white rounded-[16px] shadow-[0_2px_20px_rgba(26,26,24,0.04)] p-8 border border-[rgba(26,26,24,0.05)]">
+            <h3 className="font-sans font-bold text-[18px] text-[var(--text)] mb-3">Optimizamos tu perfil de Google</h3>
+            <p className="font-sans font-light text-[15px] text-[var(--muted)] leading-[1.6]">
+              Tu Google Business Profile es lo primero que Google revisa. Lo configuramos y optimizamos para que Google te muestre más seguido y en mejores posiciones.
+            </p>
+          </div>
+          <div className="scroll-reveal bg-white rounded-[16px] shadow-[0_2px_20px_rgba(26,26,24,0.04)] p-8 border border-[rgba(26,26,24,0.05)]">
+            <h3 className="font-sans font-bold text-[18px] text-[var(--text)] mb-3">Arreglamos el código de tu sitio</h3>
+            <p className="font-sans font-light text-[15px] text-[var(--muted)] leading-[1.6]">
+              Revisamos el código de tu página web, lo que no ves pero que Google sí revisa. Lo ajustamos para que hable el idioma que Google quiere escuchar.
+            </p>
+          </div>
+          <div className="scroll-reveal bg-white rounded-[16px] shadow-[0_2px_20px_rgba(26,26,24,0.04)] p-8 border border-[rgba(26,26,24,0.05)]">
+            <h3 className="font-sans font-bold text-[18px] text-[var(--text)] mb-3">Construimos tu autoridad local</h3>
+            <p className="font-sans font-light text-[15px] text-[var(--muted)] leading-[1.6]">
+              Google muestra primero a los negocios que más personas conocen y recomiendan. Te ayudamos a construir esa reputación en tu zona semana a semana.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION D: PROCESS */}
+      <section id="proceso" ref={processRef} className="py-[120px] px-[8%] border-t border-[rgba(26,26,24,0.08)] max-w-[1440px] mx-auto bg-[var(--surface)]">
+        <div className="font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6 opacity-100">
+          // Nuestro proceso
+        </div>
+        <h2 className="scroll-reveal text-[clamp(36px,4vw,52px)] leading-[1.1] mb-20">
+          <span className="font-sans font-bold text-[var(--text)]">Simple, directo,"</span>
+          <span className="font-serif italic text-[var(--green)]"> sin rodeos.</span>
+        </h2>
+
+        <div className="relative flex flex-col md:flex-row gap-12 md:gap-6">
+          <div className="hidden md:block absolute top-[10px] left-0 w-full border-t border-dashed border-[var(--terra)] opacity-40 z-0"></div>
+          
+          {[
+            { num: '01', title: 'Diagnóstico', desc: 'Revisamos cómo apareces hoy, qué está faltando y qué hace tu competencia.' },
+            { num: '02', title: 'Optimización', desc: 'Configuramos tu perfil de Google y ajustamos el código de tu sitio.' },
+            { num: '03', title: 'Autoridad local', desc: 'Construimos tu reputación en Google semana a semana.' },
+            { num: '04', title: 'Reportes claros', desc: 'Te mandamos reportes simples: posición actual, cuántas llamadas, qué busca la gente.' }
+          ].map((step, idx) => (
+            <div key={idx} className="process-step relative z-10 md:w-1/4">
+              <div className="font-mono text-[11px] text-[var(--terra)] bg-[var(--surface)] inline-block pr-4 mb-4">
+                {step.num}
+              </div>
+              <h3 className="font-sans font-bold text-[20px] text-[var(--text)] mb-3">{step.title}</h3>
+              <p className="font-sans font-light text-[15px] text-[var(--muted)] leading-[1.6]">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION E: GUARANTEE STRIP */}
+      <section ref={guaranteeRef} className="bg-[var(--terra)] py-[48px] px-[8%] text-center border-y border-[rgba(26,26,24,0.08)]">
+        <div className="max-w-[800px] mx-auto scroll-reveal">
+          <h2 className="font-sans font-bold text-[28px] text-[#F5F0E8] leading-[1.3] mb-3">
+            Top 3 en 90 días o seguimos trabajando sin costo extra hasta lograrlo.
+          </h2>
+          <p className="font-sans font-light text-[16px] text-[rgba(245,240,232,0.8)] mb-8">
+            No es un slogan. Es un compromiso contractual.
+          </p>
+          <a href="#contacto" className="inline-block bg-[#F5F0E8] text-[var(--dark)] rounded-[50px] px-8 py-3 font-sans font-bold hover:bg-white transition-colors">
+            Empieza hoy
+          </a>
+        </div>
+      </section>
+
+      {/* SECTION F: TESTIMONIALS */}
+      <section className="py-[120px] px-[8%] max-w-[1240px] mx-auto border-b border-[rgba(26,26,24,0.08)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[900px] mx-auto">
+          {[
+            {
+              quote: "Experiencia excelente. El resultado superó mis expectativas: una página moderna y funcional. Me sigue acompañando en el posicionamiento y hoy tengo mucha más visibilidad.",
+              name: "Melissa R.",
+              role: "Ortodoncista · San Salvador"
+            },
+            {
+              quote: "La comunicación fue constante y clara durante todo el proceso, y cumplió con los plazos sin problema. Sin duda, recomiendo sus servicios.",
+              name: "Ivania P.",
+              role: "Emprendedora"
+            }
+          ].map((test, idx) => (
+            <div key={idx} className="scroll-reveal bg-white border border-[rgba(26,26,24,0.08)] shadow-[0_4px_30px_rgba(26,26,24,0.03)] rounded-[16px] p-8 flex flex-col justify-between">
+              <p className="font-serif italic text-[18px] text-[var(--text)] leading-[1.5] mb-8">"{test.quote}"</p>
+              <div>
+                <div className="font-sans font-bold text-[15px] text-[var(--text)] mb-1">{test.name}</div>
+                <div className="font-sans font-light text-[14px] text-[var(--muted)]">{test.role}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION G: WHAT IS INCLUDED */}
+      <section className="py-[120px] px-[8%] relative">
+        <div className="scroll-reveal max-w-[640px] mx-auto bg-white rounded-[24px] p-8 md:p-12 shadow-[0_8px_40px_rgba(26,26,24,0.08)] border border-[rgba(26,26,24,0.05)] text-center">
+          <div className="font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
+            // Qué incluye
+          </div>
+          <h3 className="font-sans font-bold text-[28px] text-[var(--text)] leading-[1.2] mb-4">
+            Agenda una auditoría SEO gratuita de 30 minutos
+          </h3>
+          <p className="font-sans font-light text-[17px] text-[var(--muted)] leading-[1.65] mb-10 text-center">
+            Te mostramos exactamente dónde está tu negocio hoy, dónde podría estar, y qué hay que hacer para llegar ahí.
+          </p>
+          
+          <ul className="flex flex-col gap-4 text-left mb-10 border-t border-b border-[rgba(26,26,24,0.05)] py-6">
+            <li className="font-sans font-medium text-[15px] text-[var(--text)] flex items-start gap-3">
+              <span className="text-[var(--green)]">✓</span>
+              <span>Análisis de tu posición actual en Google Maps</span>
+            </li>
+            <li className="font-sans font-medium text-[15px] text-[var(--text)] flex items-start gap-3">
+              <span className="text-[var(--green)]">✓</span>
+              <span>Oportunidades de búsqueda en tu zona</span>
+            </li>
+            <li className="font-sans font-medium text-[15px] text-[var(--text)] flex items-start gap-3">
+              <span className="text-[var(--green)]">✓</span>
+              <span>Plan de acción claro sin tecnicismos</span>
+            </li>
+          </ul>
+
+          <a href="#contacto" className="block w-full text-center bg-[var(--terra)] text-[#F5F0E8] rounded-[50px] px-8 py-3.5 font-sans font-bold hover:bg-[#a65022] transition-colors">
+            Agendar auditoría gratis
+          </a>
+        </div>
+      </section>
+
+      {/* J: BOOKING (CALENDLY) */}
+      <section id="contacto" className="py-[100px] px-[8%] pb-[60px] border-t border-[rgba(26,26,24,0.08)] bg-[var(--bg)]">
+        <div className="text-center max-w-[560px] mx-auto mb-[48px]">
+          <div className="scroll-reveal font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6">
+            // Sin costo &middot; 30 minutos &middot; Sin compromiso
+          </div>
+          <h2 className="scroll-reveal font-sans font-bold text-[48px] leading-[1.1] text-[var(--text)] mb-6">
+            Hablemos de tu negocio.
+          </h2>
+          <p className="scroll-reveal font-sans font-light text-[18px] text-[var(--muted)] leading-[1.65]">
+            Agenda una videollamada gratuita. Te mostramos exactamente qué está fallando en tu presencia digital y qué hacer para solucionarlo.
+          </p>
+        </div>
+
+        <div className="scroll-reveal max-w-[900px] mx-auto rounded-[16px] overflow-hidden shadow-[0_4px_40px_rgba(26,26,24,0.08)] bg-white">
+          <div
+            className="calendly-inline-widget"
+            data-url="https://calendly.com/tommy-tuwebsv/30min?hide_gdpr_banner=1"
+            style={{ minWidth: '320px', height: '700px' }}
+          />
+        </div>
+      </section>
+
+      {/* SECTION H: FAQ */}
+      <section ref={faqRef} className="bg-[var(--dark)] py-[120px] px-[8%]">
+        <div className="max-w-[800px] mx-auto">
+          <h2 className="scroll-reveal font-sans font-bold text-[48px] leading-[1.1] text-[var(--bg)] mb-16">
+            Preguntas frecuentes.
+          </h2>
+
+          <div className="flex flex-col">
+            {[
+              { q: "¿Cuánto tiempo toma ver resultados?", a: "Entre 60 y 90 días para negocios con competencia media. Algunos ven movimiento desde las primeras semanas." },
+              { q: "¿Necesito tener una página web para hacer SEO Local?", a: "No es obligatorio, pero ayuda. Podemos trabajar solo con tu Google Business Profile si estás empezando." },
+              { q: "¿Qué es Google Business Profile?", a: "Es el perfil de tu negocio en Google, el que aparece en Google Maps cuando alguien te busca. Es la pieza más importante del SEO local." },
+              { q: "¿Cuánto cuesta el servicio mensual?", a: "Depende del tamaño del negocio y la competencia en tu zona. Agenda una consulta gratis y te damos un precio exacto." },
+              { q: "¿Funcionan con negocios de cualquier giro?", a: "Sí. Restaurantes, clínicas, abogados, tiendas, gimnasios. Si tienes clientes locales, el SEO local te aplica." }
+            ].map((faq, idx) => {
+              const [isOpen, setIsOpen] = useState(false);
+              const contentRef = useRef<HTMLDivElement>(null);
+
+              useEffect(() => {
+                if (contentRef.current) {
+                  gsap.to(contentRef.current, {
+                    height: isOpen ? 'auto' : 0,
+                    duration: 0.35,
+                    ease: 'power2.inOut'
+                  });
+                }
+              }, [isOpen]);
+
+              return (
+                <div key={idx} className="scroll-reveal border-b border-[rgba(245,240,232,0.1)] py-6">
+                  <button 
+                    className="w-full flex items-center justify-between text-left gap-4"
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <span className="font-sans font-medium text-[17px] text-[var(--bg)]">{faq.q}</span>
+                    <Plus 
+                      className="text-[var(--bg)] shrink-0 transition-transform duration-300" 
+                      style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
+                      size={20} 
+                    />
+                  </button>
+                  <div ref={contentRef} className="h-0 overflow-hidden">
+                    <p className="font-sans font-light text-[16px] text-[rgba(245,240,232,0.65)] pt-4 leading-[1.6]">
+                      {faq.a}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION I: CTA BANNER */}
+      <section className="relative bg-[var(--green)] py-[80px] px-[8%] overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }}></div>
+        
+        <div className="relative z-10 max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+          <h2 className="font-serif italic text-[38px] text-[var(--bg)] leading-[1.1] max-w-[500px]">
+            "¿Listo para conseguir más clientes?"
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a href="#contacto" className="bg-[var(--bg)] text-[var(--text)] rounded-full px-8 py-3.5 font-sans font-bold text-[15px] hover:bg-white transition-colors text-center">
+              Agendar consulta gratis
+            </a>
+            <a href="/#servicios" className="border border-[rgba(245,240,232,0.4)] text-[var(--bg)] rounded-full px-8 py-3.5 font-sans font-medium text-[15px] hover:bg-[rgba(245,240,232,0.1)] transition-colors text-center">
+              Ver servicios &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-[var(--dark)] pt-[80px] pb-[40px] px-[8%]">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-[48px]">
+            {/* Col 1 */}
+            <div>
+              <div className="font-sans font-bold tracking-[0.08em] text-[var(--green)] mb-4">TUWEBSV</div>
+              <p className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] mb-4">
+                Marketing local que funciona.
+              </p>
+              <address className="not-italic font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">
+                TuWebSV<br />
+                San Salvador, El Salvador<br />
+                +503 7201 8215<br />
+                <a href="mailto:hola@tuwebsv.com" className="hover:text-[#F5F0E8] transition-colors">hola@tuwebsv.com</a>
+              </address>
+            </div>
+            
+            {/* Col 2 */}
+            <div>
+              <h4 className="font-sans font-medium text-[16px] text-[var(--bg)] mb-6">Servicios</h4>
+              <ul className="flex flex-col gap-3">
+                <li><a href="/seo-local" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">SEO Local</a></li>
+                <li><a href="/google-meta-ads" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Google Ads</a></li>
+                <li><a href="#" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Redes Sociales</a></li>
+                <li><a href="/paginas-web" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Páginas Web</a></li>
+              </ul>
+            </div>
+
+            {/* Col 3 */}
+            <div>
+              <h4 className="font-sans font-medium text-[16px] text-[var(--bg)] mb-6">Empresa</h4>
+              <ul className="flex flex-col gap-3">
+                <li><a href="/nosotros" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Nosotros</a></li>
+                <li><a href="#contacto" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Contacto</a></li>
+                <li><a href="#" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Política de privacidad</a></li>
+              </ul>
+            </div>
+
+            {/* Col 4 */}
+            <div>
+              <h4 className="font-sans font-medium text-[16px] text-[var(--bg)] mb-6">Contacto</h4>
+              <ul className="flex flex-col gap-3">
+                <li className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]"><a href="mailto:hola@tuwebsv.com" className="hover:text-[#F5F0E8] transition-colors">hola@tuwebsv.com</a></li>
+                <li className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]"><a href="https://wa.me/50372018215" target="_blank" rel="noreferrer" className="hover:text-[#F5F0E8] transition-colors">+503 7201 8215</a></li>
+                <li className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">Lun–Sáb 8:00–18:00</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-[rgba(245,240,232,0.08)] pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">
+              © 2026 TuWebSV. Todos los derechos reservados.
+            </div>
+            <div className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">
+              Creada con orgullo en El Salvador 🇸🇻
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* WHATSAPP BUTTON */}
+      <a 
+        href="https://wa.me/50372018215" 
+        target="_blank" 
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-[999] w-[56px] h-[56px] bg-[var(--terra)] rounded-full flex items-center justify-center text-white shadow-[0_4px_20px_rgba(196,98,45,0.35)] hover:scale-108 transition-transform duration-200"
+      >
+        <MessageCircle size={28} />
+      </a>
+
+    </div>
+  );
+}
