@@ -255,15 +255,7 @@ export default function Contacto() {
         </div>
       </footer>
 
-      {/* WHATSAPP BUTTON */}
-      <a 
-        href="https://wa.me/50372018215" 
-        target="_blank" 
-        rel="noreferrer"
-        className="fixed bottom-6 right-6 z-[999] w-[56px] h-[56px] bg-[var(--terra)] rounded-full flex items-center justify-center text-white shadow-[0_4px_20px_rgba(196,98,45,0.35)] hover:scale-108 transition-transform duration-200"
-      >
-        <MessageCircle size={28} />
-      </a>
+      
 
     </div>
   );
