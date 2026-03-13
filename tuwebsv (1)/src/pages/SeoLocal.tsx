@@ -81,14 +81,28 @@ export default function SeoLocal() {
     return () => ctx.revert();
   }, []);
 
+  const [calReady, setCalReady] = useState(false);
+  const calRef = useRef<HTMLDivElement>(null);
+
+  // Calendly Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setCalReady(true); },
+      { threshold: 0.1 }
+    );
+    if (calRef.current) observer.observe(calRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   // Calendly
   useEffect(() => {
+    if (!calReady) return;
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
     document.head.appendChild(script);
     return () => { document.head.removeChild(script); };
-  }, []);
+  }, [calReady]);
 
   return (
     <div className="min-h-screen text-[var(--text)] bg-[var(--bg)] font-sans selection:bg-[var(--terra)] selection:text-[var(--surface)]">
@@ -414,12 +428,14 @@ export default function SeoLocal() {
           </p>
         </div>
 
-        <div className="scroll-reveal max-w-[900px] mx-auto rounded-[16px] overflow-hidden shadow-[0_4px_40px_rgba(26,26,24,0.08)] bg-white">
-          <div
-            className="calendly-inline-widget"
-            data-url="https://calendly.com/tommy-tuwebsv/30min?hide_gdpr_banner=1"
-            style={{ minWidth: '320px', height: '700px' }}
-          />
+        <div className="scroll-reveal max-w-[900px] mx-auto rounded-[16px] overflow-hidden shadow-[0_4px_40px_rgba(26,26,24,0.08)] bg-white" ref={calRef}>
+          {calReady && (
+            <div
+              className="calendly-inline-widget"
+              data-url="https://calendly.com/tommy-tuwebsv/30min?hide_gdpr_banner=1"
+              style={{ minWidth: '320px', height: '700px' }}
+            />
+          )}
         </div>
       </section>
 

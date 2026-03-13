@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MessageCircle, Menu, X } from 'lucide-react';
 
 export default function Contacto() {
@@ -19,17 +19,32 @@ export default function Contacto() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const [calReady, setCalReady] = useState(false);
+  const calRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setCalReady(true); },
+      { threshold: 0.1 }
+    );
+    if (calRef.current) observer.observe(calRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   // Load Calendly script
   useEffect(() => {
+    if (!calReady) return;
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
     document.body.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
     };
-  }, []);
+  }, [calReady]);
 
   return (
     <div className="min-h-screen text-[var(--text)] bg-[var(--bg)] font-sans selection:bg-[var(--terra)] selection:text-[var(--surface)]">
@@ -126,12 +141,14 @@ export default function Contacto() {
         <div className="flex flex-col lg:flex-row gap-12 max-w-[1200px] mx-auto items-start">
           
           {/* Left Column - Calendly */}
-          <div className="w-full lg:w-[60%] bg-white rounded-[16px] shadow-[0_8px_40px_rgba(26,26,24,0.06)] overflow-hidden border border-[rgba(26,26,24,0.08)]">
-            <div 
-              className="calendly-inline-widget" 
-              data-url="https://calendly.com/tommy-tuwebsv/30min?hide_gdpr_banner=1" 
-              style={{ minWidth: '320px', height: '700px' }} 
-            ></div>
+          <div className="w-full lg:w-[60%] bg-white rounded-[16px] shadow-[0_8px_40px_rgba(26,26,24,0.06)] overflow-hidden border border-[rgba(26,26,24,0.08)]" ref={calRef}>
+            {calReady && (
+              <div 
+                className="calendly-inline-widget" 
+                data-url="https://calendly.com/tommy-tuwebsv/30min?hide_gdpr_banner=1" 
+                style={{ minWidth: '320px', height: '700px' }} 
+              ></div>
+            )}
           </div>
 
           {/* Right Column - Contact Card */}

@@ -168,14 +168,28 @@ export default function Home() {
     return () => ctx.revert();
   }, []);
 
-  // Calendly
+  const [calReady, setCalReady] = useState(false);
+  const calRef = useRef<HTMLDivElement>(null);
+
+  // Calendly Observer
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setCalReady(true); },
+      { threshold: 0.1 }
+    );
+    if (calRef.current) observer.observe(calRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Calendly Script
+  useEffect(() => {
+    if (!calReady) return;
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
     document.head.appendChild(script);
     return () => { document.head.removeChild(script); };
-  }, []);
+  }, [calReady]);
 
   return (
     <div className="min-h-screen text-[var(--text)] bg-[var(--bg)] font-sans selection:bg-[var(--terra)] selection:text-[var(--surface)]">
@@ -328,7 +342,7 @@ export default function Home() {
             {[
               { num: '01', title: 'Agencia de SEO Local en El Salvador', desc: 'Análisis y optimización para que aparezcas cuando alguien busca tu servicio.', link: '/seo-local' },
               { num: '02', title: 'Google Ads y Meta Ads para negocios locales', desc: 'Llega a clientes que ya están buscando tus servicios ahora mismo.', link: '/google-meta-ads' },
-              { num: '03', title: 'Posicionamiento en Google Maps', desc: 'Domina los resultados locales y atrae tráfico directamente a tu negocio.' },
+              { num: '03', title: 'Posicionamiento en Google Maps', desc: 'Domina los resultados locales y atrae tráfico directamente a tu negocio.', link: '/seo-local' },
               { num: '04', title: 'Diseño de Páginas Web en San Salvador', desc: 'Tu sitio más rápido, claro, y construido para generar contactos.', link: '/paginas-web' }
             ].map((service, idx) => (
               <div key={idx} className="relative service-card group bg-[var(--surface)] rounded-[16px] shadow-[0_2px_20px_rgba(26,26,24,0.06)] p-6 md:px-7 md:py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300 hover:-translate-y-[3px] border-l-[3px] border-transparent hover:border-[var(--terra)]">
@@ -460,10 +474,11 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row gap-[80px] items-center">
           <div className="lg:w-[40%] scroll-reveal">
             <img 
-              src="/tommy_new.png" 
+              src="/tommyaboutus.webp" 
               alt="Tommy - Fundador de TuWebSV" 
               className="w-full h-auto max-h-[500px] object-cover rounded-[16px] shadow-[0_4px_30px_rgba(26,26,24,0.1)]"
               referrerPolicy="no-referrer"
+              loading="lazy"
             />
           </div>
           <div className="lg:w-[60%] flex flex-col justify-center">
@@ -576,9 +591,9 @@ export default function Home() {
               </div>
               {/* Image */}
               <div className="relative h-[220px] w-full overflow-hidden bg-[#F5F5F5]">
-                <img src={project.img} alt={project.title} className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${project.hoverImg ? 'group-hover:opacity-0' : ''}`} referrerPolicy="no-referrer" />
+                <img src={project.img} alt={project.title} className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${project.hoverImg ? 'group-hover:opacity-0' : ''}`} referrerPolicy="no-referrer" loading="lazy" />
                 {project.hoverImg && (
-                  <img src={project.hoverImg} alt={`${project.title} hover`} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105" referrerPolicy="no-referrer" />
+                  <img src={project.hoverImg} alt={`${project.title} hover`} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105" referrerPolicy="no-referrer" loading="lazy" />
                 )}
               </div>
               {/* Info */}
@@ -612,12 +627,14 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="scroll-reveal max-w-[900px] mx-auto rounded-[16px] overflow-hidden shadow-[0_4px_40px_rgba(26,26,24,0.08)] bg-white">
-          <div
-            className="calendly-inline-widget"
-            data-url="https://calendly.com/tommy-tuwebsv/30min?hide_gdpr_banner=1"
-            style={{ minWidth: '320px', height: '700px' }}
-          />
+        <div className="scroll-reveal max-w-[900px] mx-auto rounded-[16px] overflow-hidden shadow-[0_4px_40px_rgba(26,26,24,0.08)] bg-white" ref={calRef}>
+          {calReady && (
+            <div
+              className="calendly-inline-widget"
+              data-url="https://calendly.com/tommy-tuwebsv/30min?hide_gdpr_banner=1"
+              style={{ minWidth: '320px', height: '700px' }}
+            />
+          )}
         </div>
         
         <div className="text-center mt-6">

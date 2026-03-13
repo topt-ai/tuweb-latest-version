@@ -163,9 +163,10 @@ export default function Nosotros() {
           <div className="w-full md:w-5/12 scroll-reveal">
             <div className="relative w-full aspect-[4/5] rounded-[12px] overflow-hidden shadow-[0_8px_40px_rgba(26,26,24,0.08)]">
               <img 
-                src="/tommy2.0.png" 
+                src="/tommy2.0.webp" 
                 alt="Tommy, fundador de TuWebSV" 
                 className="w-full h-full object-cover object-[15%_center]"
+                loading="lazy"
               />
             </div>
           </div>

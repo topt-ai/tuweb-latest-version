@@ -1,31 +1,45 @@
 import React from 'react';
-import Home from './pages/Home';
-import SeoLocal from './pages/SeoLocal';
-import PaginasWeb from './pages/PaginasWeb';
-import GoogleMetaAds from './pages/GoogleMetaAds';
-import Nosotros from './pages/Nosotros';
-import Contacto from './pages/Contacto';
-import Politicas from './pages/Politicas';
+const Home = React.lazy(() => import('./pages/Home'));
+const SeoLocal = React.lazy(() => import('./pages/SeoLocal'));
+const PaginasWeb = React.lazy(() => import('./pages/PaginasWeb'));
+const GoogleMetaAds = React.lazy(() => import('./pages/GoogleMetaAds'));
+const Nosotros = React.lazy(() => import('./pages/Nosotros'));
+const Contacto = React.lazy(() => import('./pages/Contacto'));
+const Politicas = React.lazy(() => import('./pages/Politicas'));
 
 export default function App() {
   const path = window.location.pathname;
   if (path === '/seo-local') {
-    return <SeoLocal />;
+    return <React.Suspense fallback={<div style={{ background: '#F5F0E8', minHeight: '100vh' }} />}>
+      <SeoLocal />
+    </React.Suspense>;
   }
   if (path === '/paginas-web') {
-    return <PaginasWeb />;
+    return <React.Suspense fallback={<div style={{ background: '#F5F0E8', minHeight: '100vh' }} />}>
+      <PaginasWeb />
+    </React.Suspense>;
   }
   if (path === '/google-meta-ads') {
-    return <GoogleMetaAds />;
+    return <React.Suspense fallback={<div style={{ background: '#F5F0E8', minHeight: '100vh' }} />}>
+      <GoogleMetaAds />
+    </React.Suspense>;
   }
   if (path === '/nosotros') {
-    return <Nosotros />;
+    return <React.Suspense fallback={<div style={{ background: '#F5F0E8', minHeight: '100vh' }} />}>
+      <Nosotros />
+    </React.Suspense>;
   }
   if (path === '/contacto') {
-    return <Contacto />;
+    return <React.Suspense fallback={<div style={{ background: '#F5F0E8', minHeight: '100vh' }} />}>
+      <Contacto />
+    </React.Suspense>;
   }
   if (path === '/politicas') {
-    return <Politicas />;
+    return <React.Suspense fallback={<div style={{ background: '#F5F0E8', minHeight: '100vh' }} />}>
+      <Politicas />
+    </React.Suspense>;
   }
-  return <Home />;
+  return <React.Suspense fallback={<div style={{ background: '#F5F0E8', minHeight: '100vh' }} />}>
+    <Home />
+  </React.Suspense>;
 }
