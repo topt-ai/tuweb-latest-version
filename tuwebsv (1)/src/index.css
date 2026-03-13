@@ -14,6 +14,15 @@
   --muted: #6B6560;
   --surface: #FFFFFF;
   --dark: #1A1A18;
+
+  --chat-color-primary: #1B3D2F;
+  --chat-color-primary-shade-50: #C4622D;
+  --chat-color-primary-shade-100: #1B3D2F;
+  --chat-color-light-main: #F5F0E8;
+  --chat-color-white: #FFFFFF;
+  --chat-color-dark: #1A1A18;
+  --chat-font-family: 'DM Sans', sans-serif;
+  --chat-border-radius: 16px;
 }
 
 body {
