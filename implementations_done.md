@@ -29,4 +29,5 @@
 - [x] Rebuilt custom n8n Chat Widget: Authored `public/widget.js` injecting an interactive, stateful floating UI with embedded chat history memory, user/bot message distinction, typing indicators, and async `.fetch()` posting directly to the Express server API gateway.
 - [x] Configured native Node proxy layer: Wrote `server.js` matching standard instructions pointing directly at the authenticated autom-8-ai n8n webhook mapped through `.env` utilizing port `3001` (specifically bypassing Vite's port `3000`).
 - [x] Cleaned React components by securely executing regex pattern sweeps ripping out the legacy fixed WhatsApp icon anchor instances previously cluttering individual route exports (`Home.tsx`, `Contacto.tsx`, `SeoLocal.tsx`, etc.), and dynamically routing `/api/chat` calls in `vite.config.ts` via the default devServer proxy pipeline.
+- [x] Implemented deployment router configurations: Created `vercel.json` and Netlify `_redirects` inside the public and root scopes to correctly redirect 404 sub-routes (like `/seo-local`) to the base `index.html` file, explicitly resolving SPA client-side routing on live hosting environments.
 
