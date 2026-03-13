@@ -90,11 +90,11 @@ export default function Nosotros() {
             </div>
           </div>
           <a href="/nosotros" className="text-[var(--terra)] transition-colors">Nosotros</a>
-          <a href="/#contacto" className="hover:text-[var(--terra)] transition-colors">Contacto</a>
+          <a href="/contacto" className="hover:text-[var(--terra)] transition-colors">Contacto</a>
         </div>
         
         <div className="hidden md:block">
-          <a href="/#contacto" className="bg-[var(--green)] text-[#F5F0E8] rounded-full px-5 py-2.5 font-sans font-bold text-[14px] hover:bg-[#152e23] transition-colors">
+          <a href="/contacto" className="bg-[var(--green)] text-[#F5F0E8] rounded-full px-5 py-2.5 font-sans font-bold text-[14px] hover:bg-[#152e23] transition-colors">
             Consulta gratis
           </a>
         </div>
@@ -123,7 +123,7 @@ export default function Nosotros() {
               <a href="/google-meta-ads" className="text-[18px] text-[var(--muted)] pl-4 border-l-2 border-[rgba(26,26,24,0.1)]" onClick={() => setIsMobileMenuOpen(false)}>Google & Meta Ads</a>
             </div>
             <a href="/nosotros" onClick={() => setIsMobileMenuOpen(false)} className="text-[var(--terra)]">Nosotros</a>
-            <a href="/#contacto" onClick={() => setIsMobileMenuOpen(false)}>Contacto</a>
+            <a href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>Contacto</a>
           </div>
         </div>
       )}
@@ -161,17 +161,11 @@ export default function Nosotros() {
         <div className="flex flex-col md:flex-row gap-16 items-start max-w-[1200px] mx-auto">
           {/* Left Column - Photo */}
           <div className="w-full md:w-5/12 scroll-reveal">
-            <div className="relative w-full aspect-[3/4] rounded-[12px] overflow-hidden shadow-[0_8px_40px_rgba(26,26,24,0.08)]">
+            <div className="relative w-full aspect-[4/5] rounded-[12px] overflow-hidden shadow-[0_8px_40px_rgba(26,26,24,0.08)]">
               <img 
-                src="/tommy2.0.jpg" 
+                src="/tommy2.0.png" 
                 alt="Tommy, fundador de TuWebSV" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/tommy2.0.png';
-                  (e.target as HTMLImageElement).onerror = () => {
-                    (e.target as HTMLImageElement).src = '/tommy2.0.jpeg';
-                  };
-                }}
+                className="w-full h-full object-cover object-[15%_center]"
               />
             </div>
           </div>
@@ -291,7 +285,7 @@ export default function Nosotros() {
           <p className="font-sans font-light text-[17px] text-[var(--muted)] max-w-[480px] mx-auto leading-[1.65] mb-10">
             Una consulta de 30 minutos sin costo. Te digo exactamente qué necesita tu negocio y si puedo ayudarte.
           </p>
-          <a href="/#contacto" className="inline-block bg-[var(--terra)] text-[#F5F0E8] rounded-[50px] px-8 py-3.5 font-sans font-bold text-[15px] hover:bg-[#a65022] transition-colors">
+          <a href="/contacto" className="inline-block bg-[var(--terra)] text-[#F5F0E8] rounded-[50px] px-8 py-3.5 font-sans font-bold text-[15px] hover:bg-[#a65022] transition-colors">
             Agendar consulta gratis
           </a>
         </div>
@@ -330,8 +324,8 @@ export default function Nosotros() {
               <h4 className="font-sans font-medium text-[16px] text-[var(--bg)] mb-6">Empresa</h4>
               <ul className="flex flex-col gap-3">
                 <li><a href="/nosotros" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Nosotros</a></li>
-                <li><a href="/#contacto" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Contacto</a></li>
-                <li><a href="#" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Política de privacidad</a></li>
+                <li><a href="/contacto" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Contacto</a></li>
+                <li><a href="/politicas" className="font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)] hover:text-[#F5F0E8] transition-colors">Políticas</a></li>
               </ul>
             </div>
 
