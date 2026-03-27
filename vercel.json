@@ -1,8 +1,20 @@
 {
+  "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/seo-local", "destination": "/seo-local.html" },
+    { "source": "/paginas-web", "destination": "/paginas-web.html" },
+    { "source": "/google-meta-ads", "destination": "/google-meta-ads.html" },
+    { "source": "/nosotros", "destination": "/nosotros.html" },
+    { "source": "/contacto", "destination": "/contacto.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "redirects": [
+    { "source": "/sobre-nosotros", "destination": "/nosotros", "permanent": true },
+    { "source": "/servicios", "destination": "/", "permanent": true },
+    { "source": "/seo", "destination": "/seo-local", "permanent": true },
+    { "source": "/web", "destination": "/paginas-web", "permanent": true },
+    { "source": "/ads", "destination": "/google-meta-ads", "permanent": true },
+    { "source": "/generacion-le", "destination": "/", "permanent": true },
+    { "source": "/generacion-leads", "destination": "/", "permanent": true }
   ]
 }

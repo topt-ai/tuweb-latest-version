@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
-
+Allow: /
+Disallow: /politicas
 Sitemap: https://tuwebsv.com/sitemap.xml

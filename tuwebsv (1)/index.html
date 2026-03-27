@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,28 +11,151 @@
     <meta property="og:description" content="En TuWebSV combinamos diseño de páginas web, SEO Local y publicidad en Google & Meta Ads para hacer crecer tu negocio en El Salvador." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tuwebsv.com/" />
-    <!-- JSON-LD Local Business Schema -->
+    <meta property="og:image" content="https://tuwebsv.com/tu-web-sin-fondo-2.webp" />
+    <!-- JSON-LD MarketingAgency Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "MarketingAgency",
       "name": "TuWebSV",
+      "url": "https://tuwebsv.com",
+      "telephone": "+50372018215",
+      "email": "hola@tuwebsv.com",
+      "priceRange": "$$",
+      "description": "Agencia de marketing digital en San Salvador especializada en SEO Local, Google Ads, Meta Ads y diseño de páginas web para negocios locales en El Salvador.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "San Salvador",
-        "addressCountry": "El Salvador"
+        "addressRegion": "San Salvador",
+        "addressCountry": "SV"
       },
-      "telephone": "+503 7201 8215",
-      "email": "hola@tuwebsv.com",
-      "url": "https://tuwebsv.com/"
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": {
+        "@type": "City",
+        "name": "San Salvador"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de TuWebSV",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Local", "description": "Posicionamiento en Google Maps para negocios locales en San Salvador"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Ads", "description": "Gestión de campañas publicitarias en Google para negocios en El Salvador"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Meta Ads", "description": "Gestión de campañas en Facebook e Instagram para negocios locales"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diseño de Páginas Web", "description": "Diseño y desarrollo de sitios web para negocios en San Salvador"}}
+        ]
+      }
+    }
+    </script>
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo toma ver resultados en Google Maps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entre 60 y 90 días para negocios con competencia media. Algunos clientes ven movimiento desde las primeras semanas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito tener un sitio web para hacer Local SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No es obligatorio, pero ayuda. Podemos trabajar solo con tu Google Business Profile si estás empezando."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tarda en estar lista mi página web?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una demo en 24 horas. El sitio completo en menos de una semana, dependiendo del contenido que nos proporciones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito conocimientos técnicos para trabajar con ustedes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para nada. Nosotros manejamos todo. Tú solo apruebas y recibes resultados."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Trabajan con negocios fuera de El Salvador?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Aunque nuestro enfoque principal es El Salvador, trabajamos con negocios en toda Latinoamérica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta el servicio mensual?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del servicio y la competencia en tu zona. Agenda una consulta gratuita y te damos un precio exacto sin compromiso."
+          }
+        }
+      ]
     }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>.js .static-content{display:none}</style>
   </head>
   <body>
+    <script>document.documentElement.classList.add('js')</script>
+
+    <main class="static-content">
+      <h1>Agencia de Marketing en San Salvador</h1>
+      <p>Ayudamos a negocios en San Salvador a generar clientes reales con SEO Local, Google Ads, Meta Ads y páginas web diseñadas para convertir.</p>
+
+      <h2>SEO Local y Posicionamiento en Google Maps</h2>
+      <p>Posicionamos tu negocio en el top 3 de Google Maps para que los clientes en tu zona te encuentren primero.</p>
+
+      <h2>Diseño de Páginas Web en El Salvador</h2>
+      <p>Sitios web rápidos, limpios y construidos para convertir visitas en contactos reales.</p>
+
+      <h2>Google Ads y Meta Ads para negocios locales</h2>
+      <p>Campañas de publicidad en Google, Facebook e Instagram gestionadas para que cada dólar invertido trabaje al máximo.</p>
+
+      <h2>Agencia de Marketing Digital El Salvador</h2>
+      <p>TuWebSV es una agencia de marketing digital en San Salvador especializada en negocios locales.</p>
+
+      <section>
+        <h2>Preguntas frecuentes</h2>
+        <h3>¿Cuánto tiempo toma ver resultados en Google Maps?</h3>
+        <p>Entre 60 y 90 días para negocios con competencia media. Algunos clientes ven movimiento desde las primeras semanas.</p>
+        <h3>¿Necesito tener un sitio web para hacer Local SEO?</h3>
+        <p>No es obligatorio, pero ayuda. Podemos trabajar solo con tu Google Business Profile si estás empezando.</p>
+        <h3>¿Cuánto tarda en estar lista mi página web?</h3>
+        <p>Una demo en 24 horas. El sitio completo en menos de una semana, dependiendo del contenido que nos proporciones.</p>
+        <h3>¿Necesito conocimientos técnicos para trabajar con ustedes?</h3>
+        <p>Para nada. Nosotros manejamos todo. Tú solo apruebas y recibes resultados.</p>
+        <h3>¿Trabajan con negocios fuera de El Salvador?</h3>
+        <p>Sí. Aunque nuestro enfoque principal es El Salvador, trabajamos con negocios en toda Latinoamérica.</p>
+        <h3>¿Cuánto cuesta el servicio mensual?</h3>
+        <p>Depende del servicio y la competencia en tu zona. Agenda una consulta gratuita y te damos un precio exacto sin compromiso.</p>
+      </section>
+
+      <address>
+        TuWebSV · San Salvador, El Salvador · +503 7201 8215 · hola@tuwebsv.com · Lunes a Sábado 8:00 a 18:00
+      </address>
+    </main>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script src="/widget.js"
@@ -42,4 +165,3 @@
             defer></script>
   </body>
 </html>
-

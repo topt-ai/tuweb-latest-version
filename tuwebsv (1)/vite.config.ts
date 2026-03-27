@@ -15,6 +15,18 @@ export default defineConfig(({mode}) => {
         '@': path.resolve(__dirname, '.'),
       },
     },
+    build: {
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          'seo-local': path.resolve(__dirname, 'seo-local.html'),
+          'paginas-web': path.resolve(__dirname, 'paginas-web.html'),
+          'google-meta-ads': path.resolve(__dirname, 'google-meta-ads.html'),
+          nosotros: path.resolve(__dirname, 'nosotros.html'),
+          contacto: path.resolve(__dirname, 'contacto.html'),
+        },
+      },
+    },
     server: {
       proxy: {
         '/api': {

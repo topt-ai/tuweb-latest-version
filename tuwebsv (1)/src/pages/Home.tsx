@@ -274,7 +274,7 @@ export default function Home() {
             ya te está buscando.
           </h2>
           <p className="hero-anim font-sans font-light text-[19px] text-[var(--muted)] max-w-[520px] leading-[1.65] mb-8">
-            Ayudamos a negocios en El Salvador a aparecer en Google, dominar su zona, y convertir visitas en clientes reales.
+            Te ponemos en el top 3 de Google Maps, gestionamos tus anuncios y construimos tu sitio web. Todo enfocado en una cosa: más clientes para tu negocio.
           </p>
           <div className="hero-anim flex flex-wrap items-center gap-6">
             <a href="/contacto" className="bg-[var(--green)] text-[#F5F0E8] rounded-[50px] px-8 py-3.5 font-sans font-bold hover:bg-[#152e23] transition-colors">
@@ -320,7 +320,13 @@ export default function Home() {
       </section>
 
       {/* SECTION D: SERVICES */}
-      <section id="servicios" ref={servicesRef} className="py-[120px] px-[8%] max-w-[1440px] mx-auto">
+      <section id="servicios" ref={servicesRef} className="relative py-[120px] px-[8%] max-w-[1440px] mx-auto overflow-hidden" style={{ background: 'var(--bg)' }}>
+        {/* Decorative blobs for glass depth */}
+        <div className="absolute pointer-events-none" style={{ width: '500px', height: '500px', top: '15%', right: '-5%', borderRadius: '50%', background: 'radial-gradient(circle, rgba(74,191,191,0.13) 0%, transparent 70%)' }} />
+        <div className="absolute pointer-events-none" style={{ width: '400px', height: '400px', top: '55%', left: '10%', borderRadius: '50%', background: 'radial-gradient(circle, rgba(196,107,47,0.09) 0%, transparent 70%)' }} />
+        <div className="absolute pointer-events-none" style={{ width: '350px', height: '350px', top: '0%', left: '40%', borderRadius: '50%', background: 'radial-gradient(circle, rgba(74,191,191,0.08) 0%, transparent 70%)' }} />
+
+        <div className="relative z-10">
         <div className="scroll-reveal font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6">
           // 001 &middot; Servicios
         </div>
@@ -337,18 +343,17 @@ export default function Home() {
               No hacemos todo para todos. Nos especializamos en lo que realmente mueve el negocio de una empresa local en El Salvador: aparecer, atraer, y convertir.
             </p>
           </div>
-          
+
           <div className="lg:w-[62%] flex flex-col gap-3">
             {[
-              { num: '01', title: 'Agencia de SEO Local en El Salvador', desc: 'Análisis y optimización para que aparezcas cuando alguien busca tu servicio.', link: '/seo-local' },
+              { num: '01', title: 'SEO Local', desc: 'Sé de las primeras opciones que los clientes ven cuando buscan tu servicio en Google.', link: '/seo-local' },
               { num: '02', title: 'Google Ads y Meta Ads para negocios locales', desc: 'Llega a clientes que ya están buscando tus servicios ahora mismo.', link: '/google-meta-ads' },
-              { num: '03', title: 'Posicionamiento en Google Maps', desc: 'Domina los resultados locales y atrae tráfico directamente a tu negocio.', link: '/seo-local' },
-              { num: '04', title: 'Diseño de Páginas Web en San Salvador', desc: 'Tu sitio más rápido, claro, y construido para generar contactos.', link: '/paginas-web' }
+              { num: '03', title: 'Diseño de Páginas Web en San Salvador', desc: 'Tu sitio más rápido, claro, y construido para generar contactos.', link: '/paginas-web' }
             ].map((service, idx) => (
-              <div key={idx} className="relative service-card group bg-[var(--surface)] rounded-[16px] shadow-[0_2px_20px_rgba(26,26,24,0.06)] p-6 md:px-7 md:py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300 hover:-translate-y-[3px] border-l-[3px] border-transparent hover:border-[var(--terra)]">
+              <div key={idx} className="relative service-card group rounded-[16px] p-6 md:px-7 md:py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300 hover:-translate-y-[3px]" style={{ background: 'rgba(255, 255, 255, 0.45)', backdropFilter: 'blur(18px) saturate(160%)', WebkitBackdropFilter: 'blur(18px) saturate(160%)', border: '1px solid rgba(255, 255, 255, 0.6)', boxShadow: '0 4px 24px rgba(13, 43, 40, 0.08), inset 0 1px 0 rgba(255,255,255,0.8)' }}>
                 {service.link && <a href={service.link} className="absolute inset-0 z-10" aria-label={`Ver servicio ${service.title}`}></a>}
                 <div className="flex items-start md:items-center gap-6">
-                  <span className="font-mono text-[11px] text-[var(--muted)]">{service.num}</span>
+                  <span className="font-mono text-[11px] text-[var(--terra)]">{service.num}</span>
                   <div>
                     <h2 className="font-sans font-bold text-[20px] text-[var(--text)] mb-1">{service.title}</h2>
                     <p className="font-sans font-light text-[15px] text-[var(--muted)]">{service.desc}</p>
@@ -358,6 +363,7 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
         </div>
       </section>
 
