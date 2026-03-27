@@ -9,12 +9,21 @@
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "redirects": [
+    { "source": "https://www.tuwebsv.com/(.*)", "destination": "https://tuwebsv.com/$1", "permanent": true },
     { "source": "/sobre-nosotros", "destination": "/nosotros", "permanent": true },
     { "source": "/servicios", "destination": "/", "permanent": true },
     { "source": "/seo", "destination": "/seo-local", "permanent": true },
     { "source": "/web", "destination": "/paginas-web", "permanent": true },
     { "source": "/ads", "destination": "/google-meta-ads", "permanent": true },
     { "source": "/generacion-le", "destination": "/", "permanent": true },
-    { "source": "/generacion-leads", "destination": "/", "permanent": true }
+    { "source": "/generacion-leads", "destination": "/", "permanent": true },
+    { "source": "/generacion-leads-el-salvador", "destination": "/", "permanent": true },
+    { "source": "/posicionamiento-google-el-salvador", "destination": "/seo-local", "permanent": true },
+    { "source": "/automatizaciones-el-salvador", "destination": "/", "permanent": true },
+    { "source": "/diseno-web-el-salvador", "destination": "/paginas-web", "permanent": true },
+    { "source": "/asistentes-voz-ia-el-salvador", "destination": "/", "permanent": true },
+    { "source": "/chatbots-ia-el-salvador", "destination": "/", "permanent": true },
+    { "source": "/chatbots-inteligentes", "destination": "/", "permanent": true },
+    { "source": "/asistentes-de-voz", "destination": "/", "permanent": true }
   ]
 }
