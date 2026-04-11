@@ -571,21 +571,40 @@ export default function Home() {
         <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 pr-[8%]">
           {[
             {
+              tag: null,
               title: "The Tooth Boutique",
               desc: "Sitio web dental con sistema de selfie post-tratamiento.",
-              img: "/project_tooth.png",
-              hoverImg: "/project_selfietooth.png",
-              link: "https://www.thetoothboutique.com/"
+              img: "/tooth1.png",
+              hoverImg: "/tooth2.png",
+              link: "https://www.thetoothboutique.com/",
+              linkLabel: "Ver proyecto"
             },
             {
+              tag: "// Bienes Raíces · Demo",
+              title: "Jarvis Real Estate",
+              desc: "Demo site para agentes inmobiliarios en El Salvador. Listings, contacto directo por WhatsApp y marca personal.",
+              img: "/jarvis1.png",
+              hoverImg: "/jarvis2.png",
+              link: "https://jarvisrealty.tuwebsv.com/",
+              linkLabel: "Ver demo"
+            },
+            {
+              tag: null,
               title: "VOID",
               desc: "agencia de marketing y desempeño",
-              img: "/project_void2.png"
+              img: "/project_void2.png",
+              hoverImg: null,
+              link: null,
+              linkLabel: null
             },
             {
+              tag: null,
               title: "Top Google Places",
               desc: "The Tooth Boutique de las primeras opciones al buscar clinicas de ortodoncia en San Salvador.",
-              img: "/project_mapstooth.png"
+              img: "/project_mapstooth.png",
+              hoverImg: null,
+              link: null,
+              linkLabel: null
             }
           ].map((project, idx) => (
             <div key={idx} className="group min-w-[320px] md:min-w-[380px] snap-start rounded-[16px] overflow-hidden bg-[var(--surface)] shadow-[0_2px_20px_rgba(26,26,24,0.06)] hover:shadow-[0_12px_40px_rgba(26,26,24,0.12)] transition-all duration-300 hover:-translate-y-[4px] border border-[rgba(26,26,24,0.05)]">
@@ -604,11 +623,14 @@ export default function Home() {
               </div>
               {/* Info */}
               <div className="p-6">
+                {project.tag && (
+                  <span className="font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.05em] mb-2 block">{project.tag}</span>
+                )}
                 <h3 className="font-sans font-bold text-[18px] text-[var(--text)] mb-2">{project.title}</h3>
                 <p className="font-sans font-light text-[14px] text-[var(--muted)] mb-6">{project.desc}</p>
                 {project.link ? (
                   <a href={project.link} target="_blank" rel="noreferrer" className="inline-block font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.05em] hover:underline">
-                    Ver proyecto &rarr;
+                    {project.linkLabel} &rarr;
                   </a>
                 ) : (
                   <div className="h-[16px]"></div>
