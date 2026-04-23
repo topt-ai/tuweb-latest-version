@@ -558,8 +558,8 @@ export default function Home() {
       </section>
 
       {/* SECTION I: PORTFOLIO */}
-      <section className="py-[120px] pl-[8%] border-t border-[rgba(26,26,24,0.08)] overflow-hidden">
-        <div className="pr-[8%] max-w-[1440px] mx-auto mb-16">
+      <section className="py-[120px] px-[8%] border-t border-[rgba(26,26,24,0.08)] overflow-hidden">
+        <div className="max-w-[1440px] mx-auto mb-16">
           <div className="scroll-reveal font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-6">
             // 003 &middot; Proyectos
           </div>
@@ -568,7 +568,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 pr-[8%]">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 pb-12">
           {[
             {
               tag: null,
@@ -590,6 +590,15 @@ export default function Home() {
             },
             {
               tag: null,
+              title: "Bisou Munchies",
+              desc: "Sitio web de Bisou, marca de postres en Nicaragua.",
+              img: "/bisoutuweb.webp",
+              hoverImg: null,
+              link: "https://bisoumunchies.com/",
+              linkLabel: "Ver proyecto"
+            },
+            {
+              tag: null,
               title: "VOID",
               desc: "agencia de marketing y desempeño",
               img: "/project_void2.png",
@@ -607,7 +616,7 @@ export default function Home() {
               linkLabel: null
             }
           ].map((project, idx) => (
-            <div key={idx} className="group min-w-[320px] md:min-w-[380px] snap-start rounded-[16px] overflow-hidden bg-[var(--surface)] shadow-[0_2px_20px_rgba(26,26,24,0.06)] hover:shadow-[0_12px_40px_rgba(26,26,24,0.12)] transition-all duration-300 hover:-translate-y-[4px] border border-[rgba(26,26,24,0.05)]">
+            <div key={idx} className="group rounded-[16px] overflow-hidden bg-[var(--surface)] shadow-[0_2px_20px_rgba(26,26,24,0.06)] hover:shadow-[0_12px_40px_rgba(26,26,24,0.12)] transition-all duration-300 hover:-translate-y-[4px] border border-[rgba(26,26,24,0.05)]">
               {/* Browser Chrome */}
               <div className="h-8 bg-[#F5F5F5] border-b border-[rgba(26,26,24,0.05)] flex items-center px-4 gap-1.5">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
