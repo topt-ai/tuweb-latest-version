@@ -176,7 +176,7 @@ export default function SeoLocal() {
           <path d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.6,-46.3C91.4,-33.5,98,-18,97.7,-2.7C97.4,12.6,90.2,27.7,80.6,40.4C71,53.1,59,63.4,45.4,71.4C31.8,79.4,16.6,85.1,0.8,83.7C-15,82.3,-30,73.8,-43.3,64.7C-56.6,55.6,-68.2,45.9,-76.4,33.5C-84.6,21.1,-89.4,6,-87.6,-8.4C-85.8,-22.8,-77.4,-36.5,-66.6,-47.2C-55.8,-57.9,-42.6,-65.6,-29.4,-72.1C-16.2,-78.6,-3,-83.9,10.6,-84.9C24.2,-85.9,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
         </svg>
 
-        <div className="absolute top-[45%] -translate-y-1/2 left-[8%] z-10 w-[84%] max-w-[1200px]">
+        <div className="absolute top-[50%] -translate-y-1/2 left-[8%] z-10 w-[84%] max-w-[1200px]">
           <div className="hero-anim font-mono text-[11px] text-[var(--muted)] mb-2">
             Inicio / Servicios / SEO Local
           </div>
