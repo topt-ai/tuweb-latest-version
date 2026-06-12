@@ -264,12 +264,12 @@ export default function Home() {
         </svg>
 
         <div className="absolute top-[45%] -translate-y-1/2 left-[8%] w-[84%] max-w-[1200px]">
-          <h1 className="hero-anim font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
+          <span className="hero-anim font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
             Agencia de Marketing San Salvador
-          </h1>
-          <h2 className="hero-anim font-sans font-bold text-[clamp(52px,7vw,84px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
+          </span>
+          <h1 className="hero-anim font-sans font-bold text-[clamp(52px,7vw,84px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
             Tu próximo cliente
-          </h2>
+          </h1>
           <h2 className="hero-anim font-serif italic text-[clamp(52px,7vw,84px)] leading-[1.0] tracking-[-0.03em] text-[var(--green)] mb-4">
             ya te está buscando.
           </h2>
@@ -766,7 +766,7 @@ export default function Home() {
               <address className="not-italic font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">
                 TuWebSV<br />
                 San Salvador, El Salvador<br />
-                +503 7201 8215<br />
+                <a href="tel:+50372018215" className="hover:text-[#F5F0E8] transition-colors">+503 7201 8215</a><br />
                 <a href="mailto:hola@tuwebsv.com" className="hover:text-[#F5F0E8] transition-colors">hola@tuwebsv.com</a>
               </address>
             </div>

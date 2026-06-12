@@ -177,12 +177,12 @@ export default function PaginasWeb() {
           <div className="hero-anim font-mono text-[11px] text-[var(--muted)] mb-2">
             Inicio / Servicios / Páginas Web
           </div>
-          <h1 className="hero-anim font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
+          <span className="hero-anim font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
             Diseño de Páginas Web San Salvador
-          </h1>
-          <h2 className="hero-anim font-sans font-bold text-[clamp(44px,6vw,72px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
+          </span>
+          <h1 className="hero-anim font-sans font-bold text-[clamp(44px,6vw,72px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
             Una página web que no te trae clientes
-          </h2>
+          </h1>
           <h2 className="hero-anim font-serif italic text-[clamp(44px,6vw,72px)] leading-[1.0] tracking-[-0.03em] text-[var(--green)] mb-6">
             no es un activo. Es un gasto.
           </h2>
@@ -543,7 +543,7 @@ export default function PaginasWeb() {
               <address className="not-italic font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">
                 TuWebSV<br />
                 San Salvador, El Salvador<br />
-                +503 7201 8215<br />
+                <a href="tel:+50372018215" className="hover:text-[#F5F0E8] transition-colors">+503 7201 8215</a><br />
                 <a href="mailto:hola@tuwebsv.com" className="hover:text-[#F5F0E8] transition-colors">hola@tuwebsv.com</a>
               </address>
             </div>

@@ -305,7 +305,7 @@ export default function Nosotros() {
               <address className="not-italic font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">
                 TuWebSV<br />
                 San Salvador, El Salvador<br />
-                +503 7201 8215<br />
+                <a href="tel:+50372018215" className="hover:text-[#F5F0E8] transition-colors">+503 7201 8215</a><br />
                 <a href="mailto:hola@tuwebsv.com" className="hover:text-[#F5F0E8] transition-colors">hola@tuwebsv.com</a>
               </address>
             </div>

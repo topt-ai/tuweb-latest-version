@@ -180,12 +180,12 @@ export default function SeoLocal() {
           <div className="hero-anim font-mono text-[11px] text-[var(--muted)] mb-2">
             Inicio / Servicios / SEO Local
           </div>
-          <h1 className="hero-anim font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
+          <span className="hero-anim font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
             // SEO Local · Google Maps
-          </h1>
-          <h2 className="hero-anim font-sans font-bold text-[clamp(44px,6vw,72px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
+          </span>
+          <h1 className="hero-anim font-sans font-bold text-[clamp(44px,6vw,72px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
             Cada día que no apareces en Google Maps,
-          </h2>
+          </h1>
           <h2 className="hero-anim font-serif italic text-[clamp(44px,6vw,72px)] leading-[1.0] tracking-[-0.03em] text-[var(--green)] mb-6">
             ese cliente se va con tu competencia.
           </h2>
@@ -524,7 +524,7 @@ export default function SeoLocal() {
               <address className="not-italic font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">
                 TuWebSV<br />
                 San Salvador, El Salvador<br />
-                +503 7201 8215<br />
+                <a href="tel:+50372018215" className="hover:text-[#F5F0E8] transition-colors">+503 7201 8215</a><br />
                 <a href="mailto:hola@tuwebsv.com" className="hover:text-[#F5F0E8] transition-colors">hola@tuwebsv.com</a>
               </address>
             </div>

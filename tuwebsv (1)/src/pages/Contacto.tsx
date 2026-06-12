@@ -114,19 +114,19 @@ export default function Contacto() {
       {/* SECTION A: HERO */}
       <section className="relative h-[40vh] min-h-[360px] w-full flex flex-col justify-center overflow-hidden pt-20 border-b border-[rgba(26,26,24,0.08)]">
         <div className="relative z-10 w-[84%] max-w-[1200px] mx-auto text-center md:text-left">
-          <h1 className="sr-only">Contacto TuWebSV San Salvador</h1>
+          <span className="sr-only">Contacto TuWebSV San Salvador</span>
           <h2 className="sr-only">Agenda una consulta gratis con nuestra agencia de marketing</h2>
           <h2 className="sr-only">Agencia de marketing digital en San Salvador, El Salvador</h2>
-          
+
           <div className="font-mono text-[11px] text-[var(--muted)] mb-2">
             Inicio / Contacto
           </div>
           <div className="font-mono text-[11px] text-[var(--terra)] uppercase tracking-[0.12em] mb-4">
             // Hablemos
           </div>
-          <h2 className="font-sans font-bold text-[clamp(40px,5vw,64px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
+          <h1 className="font-sans font-bold text-[clamp(40px,5vw,64px)] leading-[1.0] tracking-[-0.03em] text-[var(--text)]">
             ¿Listo para empezar?
-          </h2>
+          </h1>
           <h2 className="font-serif italic text-[clamp(40px,5vw,64px)] leading-[1.0] tracking-[-0.03em] text-[var(--green)] mb-6">
             Agenda una consulta gratis.
           </h2>
@@ -225,7 +225,7 @@ export default function Contacto() {
               <address className="not-italic font-sans font-light text-[14px] text-[rgba(245,240,232,0.55)]">
                 TuWebSV<br />
                 San Salvador, El Salvador<br />
-                +503 7201 8215<br />
+                <a href="tel:+50372018215" className="hover:text-[#F5F0E8] transition-colors">+503 7201 8215</a><br />
                 <a href="mailto:hola@tuwebsv.com" className="hover:text-[#F5F0E8] transition-colors">hola@tuwebsv.com</a>
               </address>
             </div>
