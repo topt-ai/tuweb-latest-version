@@ -1,4 +1,5 @@
-import { useSeo, SITE_URL, ORG_SCHEMA, breadcrumbSchema } from '../seo';
+'use client';
+
 import { CAL_URL } from '../components/CalEmbed';
 import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
@@ -11,29 +12,6 @@ const VALUES = [
 ];
 
 export default function Nosotros() {
-  useSeo({
-    title: 'Sobre TuWebSV | Agencia de Marketing Digital en San Salvador, El Salvador',
-    description: 'Conoce a Tommy Acevedo, fundador de TuWebSV. Agencia de marketing digital en San Salvador especializada en SEO Local, Google Ads y diseño web para negocios locales.',
-    canonical: `${SITE_URL}/nosotros`,
-    ogTitle: 'Sobre TuWebSV | Agencia de Marketing Digital en San Salvador',
-    ogDescription: 'Conoce a Tommy Acevedo, fundador de TuWebSV. Marketing digital para negocios locales en El Salvador.',
-    jsonLd: [
-      ORG_SCHEMA,
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: 'Tommy Acevedo',
-        jobTitle: 'Fundador',
-        worksFor: { '@id': `${SITE_URL}/#organization` },
-        address: { '@type': 'PostalAddress', addressLocality: 'San Salvador', addressCountry: 'SV' },
-      },
-      breadcrumbSchema([
-        { name: 'Inicio', url: `${SITE_URL}/` },
-        { name: 'Nosotros', url: `${SITE_URL}/nosotros` },
-      ]),
-    ],
-  });
-
   const rootRef = useRootRef();
   useLenis();
   useScrollReveal(rootRef);

@@ -1,31 +1,7 @@
-import { useEffect } from 'react';
-import { useSeo, SITE_URL } from '../seo';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 
 export default function Politicas() {
-  useSeo({
-    title: 'Política de Privacidad y Términos de Servicio | TuWebSV',
-    description: 'Política de privacidad y términos de servicio de TuWebSV.',
-    canonical: `${SITE_URL}/politicas`,
-  });
-
-  useEffect(() => {
-    let meta = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
-    let created = false;
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.setAttribute('name', 'robots');
-      document.head.appendChild(meta);
-      created = true;
-    }
-    meta.setAttribute('content', 'noindex, nofollow');
-    return () => {
-      if (created && meta) document.head.removeChild(meta);
-      else if (meta) meta.setAttribute('content', 'index, follow');
-    };
-  }, []);
-
   const privacy = [
     { h: '¿Quién recopila tu información?', b: 'TuWebSV es un servicio de marketing digital con sede en San Salvador, El Salvador. Somos responsables del tratamiento de los datos que compartes con nosotros a través de este sitio web.' },
     { h: '¿Qué información recopilamos?', b: 'Recopilamos únicamente la información que tú nos proporcionas voluntariamente: nombre, correo electrónico, número de teléfono y cualquier detalle que compartas al agendar una consulta o escribirnos directamente.' },

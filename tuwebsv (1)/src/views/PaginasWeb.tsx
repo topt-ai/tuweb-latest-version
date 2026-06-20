@@ -1,4 +1,5 @@
-import { useSeo, SITE_URL, ORG_SCHEMA, serviceSchema, breadcrumbSchema } from '../seo';
+'use client';
+
 import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
@@ -28,26 +29,6 @@ const PROCESS = [
 ];
 
 export default function PaginasWeb() {
-  useSeo({
-    title: 'Mejor Diseño de Páginas Web en San Salvador | Sitios Web Profesionales y Rápidos cerca de mí - TuWebSV',
-    description: 'Diseño y desarrollo de páginas web para negocios en San Salvador. Sitios rápidos, limpios y construidos para convertir visitas en clientes reales.',
-    canonical: `${SITE_URL}/paginas-web`,
-    ogTitle: 'Diseño de Páginas Web San Salvador | TuWebSV',
-    ogDescription: 'Sitios web rápidos, limpios y construidos para convertir visitas en clientes reales. Diseño web para negocios en El Salvador.',
-    jsonLd: [
-      ORG_SCHEMA,
-      serviceSchema({
-        name: 'Diseño de Páginas Web San Salvador',
-        description: 'Diseño y desarrollo de sitios web para negocios en San Salvador y El Salvador.',
-        url: `${SITE_URL}/paginas-web`,
-      }),
-      breadcrumbSchema([
-        { name: 'Inicio', url: `${SITE_URL}/` },
-        { name: 'Páginas Web San Salvador', url: `${SITE_URL}/paginas-web` },
-      ]),
-    ],
-  });
-
   const rootRef = useRootRef();
   useLenis();
   useScrollReveal(rootRef);

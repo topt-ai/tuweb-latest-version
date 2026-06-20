@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import type { Metadata } from 'next';
 
 export const SITE_URL = 'https://tuwebsv.com';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
@@ -8,62 +8,44 @@ type JsonLd = Record<string, unknown>;
 export type SeoConfig = {
   title: string;
   description: string;
-  canonical: string;
+  /** Path portion of the canonical URL, e.g. "/seo-local" or "/". */
+  path: string;
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
-  ogType?: string;
-  jsonLd?: JsonLd[];
+  noindex?: boolean;
 };
 
-function upsertMeta(key: 'name' | 'property', value: string, content: string) {
-  let el = document.head.querySelector<HTMLMetaElement>(`meta[${key}="${value}"]`);
-  if (!el) {
-    el = document.createElement('meta');
-    el.setAttribute(key, value);
-    document.head.appendChild(el);
-  }
-  el.setAttribute('content', content);
+/**
+ * Build a Next.js Metadata object from a per-route SEO config. Server-side,
+ * so titles/canonical/OG are present in the initial HTML (and seen by social
+ * scrapers, unlike the old client-side approach).
+ */
+export function buildMetadata(cfg: SeoConfig): Metadata {
+  const canonical = `${SITE_URL}${cfg.path}`;
+  return {
+    title: cfg.title,
+    description: cfg.description,
+    alternates: {
+      canonical,
+      languages: {
+        'es-SV': canonical,
+        'x-default': `${SITE_URL}/`,
+      },
+    },
+    openGraph: {
+      title: cfg.ogTitle ?? cfg.title,
+      description: cfg.ogDescription ?? cfg.description,
+      url: canonical,
+      siteName: 'TuWebSV',
+      locale: 'es_SV',
+      type: 'website',
+      images: [{ url: cfg.ogImage ?? DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
+    },
+    ...(cfg.noindex ? { robots: { index: false, follow: false } } : {}),
+  };
 }
 
-function upsertLink(rel: string, href: string, hreflang?: string) {
-  const selector = hreflang
-    ? `link[rel="${rel}"][hreflang="${hreflang}"]`
-    : `link[rel="${rel}"]:not([hreflang])`;
-  let el = document.head.querySelector<HTMLLinkElement>(selector);
-  if (!el) {
-    el = document.createElement('link');
-    el.setAttribute('rel', rel);
-    if (hreflang) el.setAttribute('hreflang', hreflang);
-    document.head.appendChild(el);
-  }
-  el.setAttribute('href', href);
-}
-
-export function useSeo(cfg: SeoConfig) {
-  useEffect(() => {
-    document.title = cfg.title;
-    upsertMeta('name', 'description', cfg.description);
-    upsertLink('canonical', cfg.canonical);
-    upsertLink('alternate', cfg.canonical, 'es-SV');
-    upsertLink('alternate', `${SITE_URL}/`, 'x-default');
-
-    upsertMeta('property', 'og:title', cfg.ogTitle ?? cfg.title);
-    upsertMeta('property', 'og:description', cfg.ogDescription ?? cfg.description);
-    upsertMeta('property', 'og:url', cfg.canonical);
-    upsertMeta('property', 'og:image', cfg.ogImage ?? DEFAULT_OG_IMAGE);
-    upsertMeta('property', 'og:type', cfg.ogType ?? 'website');
-
-    document.querySelectorAll('script[data-seo-jsonld="true"]').forEach((n) => n.remove());
-    for (const obj of cfg.jsonLd ?? []) {
-      const s = document.createElement('script');
-      s.type = 'application/ld+json';
-      s.dataset.seoJsonld = 'true';
-      s.text = JSON.stringify(obj);
-      document.head.appendChild(s);
-    }
-  }, [JSON.stringify(cfg)]);
-}
 
 const GEO = { '@type': 'GeoCoordinates', latitude: 13.6929, longitude: -89.2182 } as const;
 const ADDRESS = {

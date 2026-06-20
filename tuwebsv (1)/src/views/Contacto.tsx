@@ -1,25 +1,11 @@
-import { useSeo, SITE_URL, ORG_SCHEMA, breadcrumbSchema } from '../seo';
+'use client';
+
 import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import CalEmbed from '../components/CalEmbed';
 
 export default function Contacto() {
-  useSeo({
-    title: 'Contacto | TuWebSV Agencia de Marketing Digital en San Salvador',
-    description: 'Agenda una consulta gratis con TuWebSV. Agencia de marketing digital en San Salvador, El Salvador. WhatsApp: +503 7201 8215 · Email: hola@tuwebsv.com',
-    canonical: `${SITE_URL}/contacto`,
-    ogTitle: 'Contacto | TuWebSV Agencia de Marketing San Salvador',
-    ogDescription: 'Agenda una consulta gratis. WhatsApp: +503 7201 8215 · Email: hola@tuwebsv.com · Lunes a Sábado 8:00 a 18:00',
-    jsonLd: [
-      ORG_SCHEMA,
-      breadcrumbSchema([
-        { name: 'Inicio', url: `${SITE_URL}/` },
-        { name: 'Contacto', url: `${SITE_URL}/contacto` },
-      ]),
-    ],
-  });
-
   const rootRef = useRootRef();
   useLenis();
   useScrollReveal(rootRef);

@@ -1,4 +1,5 @@
-import { useSeo, SITE_URL, ORG_SCHEMA, serviceSchema, breadcrumbSchema } from '../seo';
+'use client';
+
 import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
@@ -27,26 +28,6 @@ const PROCESS = [
 ];
 
 export default function GoogleMetaAds() {
-  useSeo({
-    title: 'Mejor Agencia de Google Ads y Meta Ads en San Salvador | Publicidad Digital cerca de mí - TuWebSV',
-    description: 'Gestión de campañas publicitarias en Google Ads, Facebook e Instagram para negocios locales en San Salvador y El Salvador. Cada dólar invertido trabaja al máximo.',
-    canonical: `${SITE_URL}/google-meta-ads`,
-    ogTitle: 'Google Ads y Meta Ads San Salvador | TuWebSV',
-    ogDescription: 'Campañas de publicidad en Google, Facebook e Instagram gestionadas para negocios locales en El Salvador.',
-    jsonLd: [
-      ORG_SCHEMA,
-      serviceSchema({
-        name: 'Google Ads y Meta Ads San Salvador',
-        description: 'Gestión de campañas publicitarias en Google, Facebook e Instagram para negocios locales en El Salvador.',
-        url: `${SITE_URL}/google-meta-ads`,
-      }),
-      breadcrumbSchema([
-        { name: 'Inicio', url: `${SITE_URL}/` },
-        { name: 'Google & Meta Ads San Salvador', url: `${SITE_URL}/google-meta-ads` },
-      ]),
-    ],
-  });
-
   const rootRef = useRootRef();
   useLenis();
   useScrollReveal(rootRef);

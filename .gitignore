@@ -8,3 +8,6 @@ package-lock.json
 .env
 .claude/
 .vite/
+.next/
+next-env.d.ts
+*.tsbuildinfo

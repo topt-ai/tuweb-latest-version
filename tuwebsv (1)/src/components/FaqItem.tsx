@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useId, useRef, useState } from 'react';
 import { Plus } from 'lucide-react';
 import gsap from 'gsap';

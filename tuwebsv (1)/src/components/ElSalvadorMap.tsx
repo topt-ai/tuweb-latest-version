@@ -1,22 +1,19 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import rawSvg from '../../public/el-salvador.svg?raw';
+import { EL_SALVADOR_PATH } from './elSalvadorPath';
 
 /**
- * Real El Salvador outline imported from public/el-salvador.svg, exported
- * from Canva. We strip the file's own fills/strokes and render the country
- * silhouette as a stroke-only path styled with our CSS variables, then
- * overlay our own markers and label.
+ * Real El Salvador outline (path extracted from the Canva SVG export and
+ * inlined in elSalvadorPath.ts). Rendered as a stroke-only silhouette styled
+ * with our CSS variables, with our own markers and label overlaid.
  *
  * SVG source: viewBox "0 0 375 374.99". The country shape lives roughly
- * inside the y ≈ [82, 293] band (from the clip-path declaration in the
- * Canva export). Marker coordinates are calibrated against that.
+ * inside the y ≈ [82, 293] band. Marker coordinates are calibrated against that.
  */
 
-// Pull out the path with the country fill. Canva exports the silhouette as a
-// blue path (#5575d3) and a white interior detail — we keep only the blue.
-const COUNTRY_PATH_MATCH = rawSvg.match(/fill="#5575d3"[^>]*\sd="([^"]+)"/);
-const COUNTRY_D = COUNTRY_PATH_MATCH ? COUNTRY_PATH_MATCH[1] : '';
+const COUNTRY_D = EL_SALVADOR_PATH;
 
 // City positions in the SVG's own coordinate system (viewBox 375×375, country
 // roughly spans y 82–293). These are eyeballed against the Canva outline and

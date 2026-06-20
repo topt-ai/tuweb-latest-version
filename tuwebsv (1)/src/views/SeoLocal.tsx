@@ -1,4 +1,5 @@
-import { useSeo, SITE_URL, ORG_SCHEMA, serviceSchema, breadcrumbSchema } from '../seo';
+'use client';
+
 import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
@@ -28,26 +29,6 @@ const PROCESS = [
 ];
 
 export default function SeoLocal() {
-  useSeo({
-    title: 'Mejor SEO Local en San Salvador | Aparecer en el Top 3 de Google Maps cerca de mí - TuWebSV',
-    description: 'Posicionamos tu negocio en el top 3 de Google Maps en San Salvador. SEO Local, Google Business Profile y estrategia de búsqueda local para negocios en El Salvador.',
-    canonical: `${SITE_URL}/seo-local`,
-    ogTitle: 'SEO Local San Salvador | Posicionamiento en Google Maps | TuWebSV',
-    ogDescription: 'Posicionamos tu negocio en el top 3 de Google Maps en San Salvador. SEO Local para negocios en El Salvador.',
-    jsonLd: [
-      ORG_SCHEMA,
-      serviceSchema({
-        name: 'SEO Local San Salvador',
-        description: 'Posicionamiento en Google Maps para negocios locales en San Salvador y El Salvador.',
-        url: `${SITE_URL}/seo-local`,
-      }),
-      breadcrumbSchema([
-        { name: 'Inicio', url: `${SITE_URL}/` },
-        { name: 'SEO Local San Salvador', url: `${SITE_URL}/seo-local` },
-      ]),
-    ],
-  });
-
   const rootRef = useRootRef();
   useLenis();
   useScrollReveal(rootRef);

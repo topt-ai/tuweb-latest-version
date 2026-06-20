@@ -1,6 +1,7 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { useSeo, SITE_URL, ORG_SCHEMA } from '../seo';
 import { useLenis } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
@@ -57,15 +58,6 @@ const PROJECTS = [
 ];
 
 export default function Home() {
-  useSeo({
-    title: 'Agencia de Marketing Digital en San Salvador | SEO Local, Páginas Web y Google & Meta Ads - TuWebSV',
-    description: '¿Buscas una agencia de marketing digital en San Salvador? En TuWebSV combinamos diseño de páginas web, SEO Local y publicidad en Google & Meta Ads para hacer crecer tu negocio.',
-    canonical: `${SITE_URL}/`,
-    ogTitle: 'TuWebSV — Sitios web y SEO local en El Salvador',
-    ogDescription: 'Visible o invisible. No hay intermedios.',
-    jsonLd: [ORG_SCHEMA],
-  });
-
   const sitiosCountersRef = useRef<HTMLDivElement>(null);
 
   useLenis();
