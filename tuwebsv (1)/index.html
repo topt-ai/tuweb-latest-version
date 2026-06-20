@@ -23,11 +23,13 @@
     <meta name="geo.placename" content="San Salvador" />
     <meta name="geo.position" content="13.6929;-89.2182" />
     <meta name="ICBM" content="13.6929, -89.2182" />
-    <!-- JSON-LD MarketingAgency Schema -->
+    <!-- JSON-LD Organization Schema (global, applies to every route) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "MarketingAgency",
+      "@type": "ProfessionalService",
+      "additionalType": "https://schema.org/MarketingAgency",
+      "@id": "https://tuwebsv.com/#organization",
       "name": "TuWebSV",
       "url": "https://tuwebsv.com",
       "telephone": "+50372018215",
@@ -65,6 +67,16 @@
         "@type": "City",
         "name": "San Salvador"
       },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+50372018215",
+          "email": "hola@tuwebsv.com",
+          "contactType": "customer service",
+          "areaServed": "SV",
+          "availableLanguage": ["Spanish", "English"]
+        }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Servicios de TuWebSV",
@@ -77,75 +89,14 @@
       }
     }
     </script>
-    <!-- JSON-LD FAQ Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Cuánto tiempo toma ver resultados en Google Maps?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Entre 60 y 90 días para negocios con competencia media. Algunos clientes ven movimiento desde las primeras semanas."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Necesito tener un sitio web para hacer Local SEO?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No es obligatorio, pero ayuda. Podemos trabajar solo con tu Google Business Profile si estás empezando."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuánto tarda en estar lista mi página web?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Una demo en 24 horas. El sitio completo en menos de una semana, dependiendo del contenido que nos proporciones."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Necesito conocimientos técnicos para trabajar con ustedes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Para nada. Nosotros manejamos todo. Tú solo apruebas y recibes resultados."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Trabajan con negocios fuera de El Salvador?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. Aunque nuestro enfoque principal es El Salvador, trabajamos con negocios en toda Latinoamérica."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuánto cuesta el servicio mensual?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Depende del servicio y la competencia en tu zona. Agenda una consulta gratuita y te damos un precio exacto sin compromiso."
-          }
-        }
-      ]
-    }
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script src="/widget.js"
-            data-api="/api/chat"
-            data-title="TuWebSV"
-            data-key="top_t_tuweb"
-            defer></script>
+    <script src="/widget.js" defer></script>
   </body>
 </html>

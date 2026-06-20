@@ -1,11 +1,6 @@
 {
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/seo-local", "destination": "/seo-local.html" },
-    { "source": "/paginas-web", "destination": "/paginas-web.html" },
-    { "source": "/google-meta-ads", "destination": "/google-meta-ads.html" },
-    { "source": "/nosotros", "destination": "/nosotros.html" },
-    { "source": "/contacto", "destination": "/contacto.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "redirects": [

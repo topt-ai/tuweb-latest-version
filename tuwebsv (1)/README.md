@@ -1,20 +1,35 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# TuWebSV
 
-# Run and deploy your AI Studio app
+Marketing site for TuWebSV. React 19 + Vite + TypeScript + Tailwind 4.
 
-This contains everything you need to run your app locally.
+## Run locally
 
-View your app in AI Studio: https://ai.studio/apps/b1cafed4-e0d7-498d-8a7a-e1586e33bed2
+Prerequisites: Node.js 18+
 
-## Run Locally
+```
+npm install
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+Vite serves the app on `http://localhost:3000`.
 
+## Build
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```
+npm run build
+npm run preview
+```
+
+## Routing
+
+All routes are React-rendered from `src/App.tsx`. The Vercel config (`vercel.json`) rewrites every request to `index.html` so the SPA can pick up deep links.
+
+## SEO
+
+Per-route `<title>`, meta, OG, and JSON-LD are set client-side via the `useSeo` hook in `src/seo.ts`. The site's default Organization schema is baked into `index.html` so it ships before JS hydrates.
+
+Note: client-side meta tags work for Google (which renders JS) but most social-link scrapers (Facebook, LinkedIn) do not run JS, so shared links to subpages will fall back to the homepage OG card. If full per-route social previews are required, migrate to an SSR framework (Next.js or Astro).
+
+## WhatsApp button
+
+`public/widget.js` injects a floating WhatsApp link button in the bottom-right corner. Loaded from `index.html` via `<script src="/widget.js" defer>`.

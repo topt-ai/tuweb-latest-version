@@ -6,3 +6,5 @@ dist-ssr/
 .DS_Store
 package-lock.json
 .env
+.claude/
+.vite/
