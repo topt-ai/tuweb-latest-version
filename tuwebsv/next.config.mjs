@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // This app dir is the deploy root (Vercel root directory = "tuwebsv (1)").
+  // This app dir is the deploy root (Vercel root directory = "tuwebsv").
   // Pin tracing here so parent-folder lockfiles don't confuse the build.
   outputFileTracingRoot: import.meta.dirname,
   async redirects() {
