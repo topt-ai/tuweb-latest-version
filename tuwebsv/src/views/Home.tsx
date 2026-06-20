@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { useLenis } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
@@ -288,18 +289,20 @@ export default function Home() {
                 className="scroll-reveal group rounded-[16px] bg-[var(--surface)] border border-[var(--border)] overflow-hidden transition-all duration-200 hover:border-[var(--border-strong)]"
               >
                 <div className="relative bg-[var(--bg)] border-b border-[var(--border)] overflow-hidden" style={{ aspectRatio: '16 / 10' }}>
-                  <img
+                  <Image
                     src={p.img}
                     alt={p.client}
-                    loading="lazy"
-                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${p.hoverImg ? 'group-hover:opacity-0' : ''}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className={`object-cover transition-all duration-500 group-hover:scale-105 ${p.hoverImg ? 'group-hover:opacity-0' : ''}`}
                   />
                   {p.hoverImg && (
-                    <img
+                    <Image
                       src={p.hoverImg}
                       alt=""
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105"
                     />
                   )}
                 </div>

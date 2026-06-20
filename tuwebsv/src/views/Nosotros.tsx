@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { CAL_URL } from '../components/CalEmbed';
 import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
@@ -38,11 +39,13 @@ export default function Nosotros() {
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-[42%_1fr] gap-16 items-center">
           <div className="scroll-reveal">
             <div className="rounded-[16px] overflow-hidden border border-[var(--border)] bg-[var(--surface)]">
-              <img
+              <Image
                 src="/tommyaboutus.webp"
                 alt="Tommy Acevedo, fundador de TuWebSV"
+                width={1658}
+                height={1648}
+                sizes="(max-width: 1024px) 100vw, 42vw"
                 className="w-full h-auto object-cover"
-                loading="lazy"
               />
             </div>
           </div>

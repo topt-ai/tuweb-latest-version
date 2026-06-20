@@ -3,6 +3,11 @@ const nextConfig = {
   // This app dir is the deploy root (Vercel root directory = "tuwebsv").
   // Pin tracing here so parent-folder lockfiles don't confuse the build.
   outputFileTracingRoot: import.meta.dirname,
+  images: {
+    // Serve AVIF first, then WebP — large source PNGs get transcoded and
+    // resized to the displayed size on demand (cached at the edge on Vercel).
+    formats: ['image/avif', 'image/webp'],
+  },
   async redirects() {
     const map = [
       ['/sobre-nosotros', '/nosotros'],
