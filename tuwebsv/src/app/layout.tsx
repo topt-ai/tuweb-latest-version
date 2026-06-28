@@ -7,11 +7,11 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Agencia de Marketing Digital en San Salvador | SEO Local, Páginas Web y Google & Meta Ads - TuWebSV',
+    default: 'Mejor Agencia de Marketing en San Salvador | SEO Local, Páginas Web y Google & Meta Ads - TuWebSV',
     template: '%s',
   },
   description:
-    '¿Buscas una agencia de marketing digital en San Salvador? En TuWebSV combinamos diseño de páginas web, SEO Local y publicidad en Google & Meta Ads para hacer crecer tu negocio.',
+    '¿Buscas una agencia de marketing en San Salvador? En TuWebSV combinamos diseño de páginas web, SEO Local y publicidad en Google & Meta Ads para hacer crecer tu negocio.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },

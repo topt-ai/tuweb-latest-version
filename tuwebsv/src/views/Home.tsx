@@ -129,17 +129,17 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 w-full max-w-[1280px] mx-auto">
-          <div className="hero-fade-up hero-fade-up-1 font-mono text-[11px] uppercase tracking-[0.15em] text-[var(--accent)] mb-6">
-            Websites &nbsp;·&nbsp; SEO local &nbsp;·&nbsp; tuwebsv.com
-          </div>
+          <h1 className="hero-fade-up hero-fade-up-1 font-mono text-[11px] uppercase tracking-[0.15em] text-[var(--border-strong)] mb-6">
+            Agencia de Marketing en San Salvador
+          </h1>
 
-          <h1
+          <p
             className="font-display font-bold leading-[1.02] tracking-[-0.02em] text-[var(--text)]"
             style={{ fontSize: 'clamp(44px, 7.5vw, 88px)' }}
           >
             <span className="hero-fade-up hero-fade-up-2 block">Visible o invisible.</span>
             <span className="hero-fade-up hero-fade-up-3 block">No hay intermedios.</span>
-          </h1>
+          </p>
 
           <p className="hero-fade-up hero-fade-up-4 mt-6 font-sans font-light text-[16px] md:text-[18px] text-[var(--muted)] leading-[1.65] max-w-[480px]">
             Construimos sitios. Mejoramos tu posición en Google.

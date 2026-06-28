@@ -4,12 +4,12 @@ import JsonLd from '../../components/JsonLd';
 import Nosotros from '../../views/Nosotros';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Sobre TuWebSV | Agencia de Marketing Digital en San Salvador, El Salvador',
+  title: 'Sobre TuWebSV | Agencia de Marketing en San Salvador, El Salvador',
   description:
-    'Conoce a Tommy Acevedo, fundador de TuWebSV. Agencia de marketing digital en San Salvador especializada en SEO Local, Google Ads y diseño web para negocios locales.',
+    'Conoce a Tommy Acevedo, fundador de TuWebSV. Agencia de marketing en San Salvador especializada en SEO Local, Google Ads y diseño web para negocios locales.',
   path: '/nosotros',
-  ogTitle: 'Sobre TuWebSV | Agencia de Marketing Digital en San Salvador',
-  ogDescription: 'Conoce a Tommy Acevedo, fundador de TuWebSV. Marketing digital para negocios locales en El Salvador.',
+  ogTitle: 'Sobre TuWebSV | Agencia de Marketing en San Salvador',
+  ogDescription: 'Conoce a Tommy Acevedo, fundador de TuWebSV. Marketing para negocios locales en El Salvador.',
 });
 
 export default function Page() {

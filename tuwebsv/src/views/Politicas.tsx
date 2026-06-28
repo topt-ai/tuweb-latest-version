@@ -3,7 +3,7 @@ import SiteFooter from '../components/SiteFooter';
 
 export default function Politicas() {
   const privacy = [
-    { h: '¿Quién recopila tu información?', b: 'TuWebSV es un servicio de marketing digital con sede en San Salvador, El Salvador. Somos responsables del tratamiento de los datos que compartes con nosotros a través de este sitio web.' },
+    { h: '¿Quién recopila tu información?', b: 'TuWebSV es una agencia de marketing con sede en San Salvador, El Salvador. Somos responsables del tratamiento de los datos que compartes con nosotros a través de este sitio web.' },
     { h: '¿Qué información recopilamos?', b: 'Recopilamos únicamente la información que tú nos proporcionas voluntariamente: nombre, correo electrónico, número de teléfono y cualquier detalle que compartas al agendar una consulta o escribirnos directamente.' },
     { h: '¿Para qué usamos tu información?', b: 'Usamos tu información exclusivamente para: responder a tu consulta, coordinar reuniones o llamadas, y enviarte información relevante sobre nuestros servicios si así lo solicitas. No enviamos correos masivos ni publicidad no solicitada.' },
     { h: '¿Compartimos tu información con terceros?', b: 'No vendemos, alquilamos ni compartimos tu información personal con terceros. Utilizamos Calendly para gestionar agendas y WhatsApp para comunicación directa. Ambas plataformas tienen sus propias políticas de privacidad independientes.' },

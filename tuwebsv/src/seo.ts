@@ -67,7 +67,7 @@ export const ORG_SCHEMA: JsonLd = {
   email: 'hola@tuwebsv.com',
   priceRange: '$$',
   description:
-    'Agencia de marketing digital en San Salvador especializada en SEO Local, Google Ads, Meta Ads y diseño de páginas web para negocios locales en El Salvador.',
+    'Agencia de marketing en San Salvador especializada en SEO Local, Google Ads, Meta Ads y diseño de páginas web para negocios locales en El Salvador.',
   address: ADDRESS,
   geo: GEO,
   sameAs: SAME_AS,
