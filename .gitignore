@@ -4,7 +4,6 @@ dist-ssr/
 *.local
 .npm/
 .DS_Store
-package-lock.json
 .env
 .claude/
 .vite/
