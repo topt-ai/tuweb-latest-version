@@ -3,7 +3,7 @@
 import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import CalEmbed from '../components/CalEmbed';
+import ContactForm from '../components/ContactForm';
 
 export default function Contacto() {
   const rootRef = useRootRef();
@@ -22,18 +22,18 @@ export default function Contacto() {
             Hablemos de tu negocio.
           </h1>
           <p className="mt-6 font-sans font-light text-[16px] md:text-[18px] text-[var(--muted)] leading-[1.65] max-w-[560px]">
-            Agenda una videollamada gratuita de 30 minutos. Te decimos
+            Cuéntanos qué está pasando con tu negocio. Te decimos
             exactamente qué está fallando en tu presencia digital y qué hacer
             para solucionarlo.
           </p>
         </div>
       </section>
 
-      {/* CALENDLY + CONTACT METHODS */}
+      {/* CONTACT FORM + CONTACT METHODS */}
       <section className="bg-[var(--bg)] py-16 px-6 md:px-12">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
           <div className="scroll-reveal">
-            <CalEmbed />
+            <ContactForm />
           </div>
           <aside className="scroll-reveal flex flex-col gap-4">
             <div className="rounded-[16px] bg-[var(--surface)] border border-[var(--border)] p-6">

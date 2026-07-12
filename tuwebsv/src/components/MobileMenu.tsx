@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
-import { CAL_URL } from './CalEmbed';
+import { WHATSAPP_URL } from '../whatsapp';
 
 type Props = { open: boolean; onClose: () => void; id?: string };
 
@@ -57,13 +57,13 @@ export default function MobileMenu({ open, onClose, id = 'mobile-menu' }: Props)
       </nav>
       <div className="mt-10">
         <a
-          href={CAL_URL}
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noreferrer"
           onClick={onClose}
           className="inline-flex items-center justify-center bg-[var(--accent)] text-white rounded-full px-6 py-3 font-sans font-medium text-[14px] transition-colors duration-200 hover:bg-[var(--accent-deep)]"
         >
-          Agendar llamada
+          Contáctanos
         </a>
       </div>
     </div>

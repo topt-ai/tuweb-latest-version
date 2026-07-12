@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Menu } from 'lucide-react';
 import MobileMenu from './MobileMenu';
 import ServicesDropdown from './ServicesDropdown';
-import { CAL_URL } from './CalEmbed';
+import { WHATSAPP_URL } from '../whatsapp';
 
 type Props = {
   current?: 'home' | 'servicios' | 'trabajo' | 'nosotros' | 'contacto';
@@ -53,12 +53,12 @@ export default function SiteNav({ current }: Props) {
         </div>
 
         <a
-          href={CAL_URL}
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noreferrer"
           className="hidden md:inline-flex items-center bg-[var(--accent)] text-white rounded-full px-5 py-2 font-sans font-medium text-[13px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_20px_rgba(45,79,255,0.3)]"
         >
-          Agendar llamada
+          Contáctanos
         </a>
 
         <button

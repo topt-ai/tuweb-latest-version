@@ -4,7 +4,8 @@ import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import FaqItem from '../components/FaqItem';
-import CalEmbed, { CAL_URL } from '../components/CalEmbed';
+import ContactForm from '../components/ContactForm';
+import { WHATSAPP_URL } from '../whatsapp';
 import ElSalvadorMap from '../components/ElSalvadorMap';
 
 const FAQS = [
@@ -71,8 +72,8 @@ export default function SeoLocal() {
             <span>Trabajo continuo</span>
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-6">
-            <a href={CAL_URL} target="_blank" rel="noreferrer" className="inline-flex items-center bg-[var(--accent)] text-white rounded-full px-7 py-3 font-sans font-medium text-[14px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_24px_rgba(45,79,255,0.35)]">
-              Consulta gratis
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="inline-flex items-center bg-[var(--accent)] text-white rounded-full px-7 py-3 font-sans font-medium text-[14px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_24px_rgba(45,79,255,0.35)]">
+              Contáctanos
             </a>
             <a href="#proceso" className="font-sans font-normal text-[14px] text-[var(--accent)] hover:underline underline-offset-4">
               Ver cómo funciona →
@@ -157,7 +158,7 @@ export default function SeoLocal() {
             top 3 en tu categoría dentro de 90 días, continuamos el servicio
             gratis hasta lograrlo.
           </p>
-          <a href={CAL_URL} target="_blank" rel="noreferrer" className="scroll-reveal mt-10 inline-flex items-center bg-[var(--accent)] text-white rounded-full px-7 py-3 font-sans font-medium text-[14px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_24px_rgba(45,79,255,0.35)]">
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="scroll-reveal mt-10 inline-flex items-center bg-[var(--accent)] text-white rounded-full px-7 py-3 font-sans font-medium text-[14px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_24px_rgba(45,79,255,0.35)]">
             Empieza hoy →
           </a>
         </div>
@@ -184,10 +185,10 @@ export default function SeoLocal() {
             ¿Listo para aparecer en Google Maps?
           </h2>
           <p className="scroll-reveal mt-6 font-sans font-light text-[16px] text-[var(--muted)] leading-[1.65] max-w-[520px]">
-            Agenda una llamada de 30 minutos. Sin presión, solo una
+            Cuéntanos sobre tu negocio. Sin presión, solo una
             conversación sobre lo que necesita tu negocio.
           </p>
-          <div className="scroll-reveal mt-12"><CalEmbed /></div>
+          <div className="scroll-reveal mt-12"><ContactForm /></div>
         </div>
       </section>
 

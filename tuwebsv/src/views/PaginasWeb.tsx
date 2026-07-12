@@ -4,7 +4,8 @@ import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import FaqItem from '../components/FaqItem';
-import CalEmbed, { CAL_URL } from '../components/CalEmbed';
+import ContactForm from '../components/ContactForm';
+import { WHATSAPP_URL } from '../whatsapp';
 import TypingCode from '../components/TypingCode';
 
 const FAQS = [
@@ -71,8 +72,8 @@ export default function PaginasWeb() {
             <span>SEO desde el inicio</span>
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-6">
-            <a href={CAL_URL} target="_blank" rel="noreferrer" className="inline-flex items-center bg-[var(--accent)] text-white rounded-full px-7 py-3 font-sans font-medium text-[14px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_24px_rgba(45,79,255,0.35)]">
-              Demo gratis
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="inline-flex items-center bg-[var(--accent)] text-white rounded-full px-7 py-3 font-sans font-medium text-[14px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_24px_rgba(45,79,255,0.35)]">
+              Contáctanos
             </a>
             <a href="#proceso" className="font-sans font-normal text-[14px] text-[var(--accent)] hover:underline underline-offset-4">
               Ver cómo trabajamos →
@@ -141,10 +142,10 @@ export default function PaginasWeb() {
             ¿Listo para tu sitio?
           </h2>
           <p className="scroll-reveal mt-6 font-sans font-light text-[16px] text-[var(--muted)] leading-[1.65] max-w-[520px]">
-            Agenda una llamada. Hablamos de qué necesita tu negocio y te
-            mostramos una demo gratis en 24 horas.
+            Cuéntanos qué necesita tu negocio y te mostramos una demo
+            gratis en 24 horas.
           </p>
-          <div className="scroll-reveal mt-12"><CalEmbed /></div>
+          <div className="scroll-reveal mt-12"><ContactForm /></div>
         </div>
       </section>
 

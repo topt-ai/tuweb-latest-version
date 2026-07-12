@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { CAL_URL } from '../components/CalEmbed';
+import { WHATSAPP_URL } from '../whatsapp';
 import { useLenis, useScrollReveal, useRootRef } from '../scroll-reveal';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
@@ -102,11 +102,11 @@ export default function Nosotros() {
             ¿Hablamos?
           </h2>
           <p className="scroll-reveal mt-6 font-sans font-light text-[16px] text-[var(--muted)] leading-[1.65] max-w-[520px] mx-auto">
-            Una llamada de 30 minutos. Sin compromiso. Hablamos de tu negocio
-            y de qué tiene más sentido para ti.
+            Sin compromiso. Hablamos de tu negocio y de qué tiene más
+            sentido para ti.
           </p>
-          <a href={CAL_URL} target="_blank" rel="noreferrer" className="scroll-reveal mt-10 inline-flex items-center bg-[var(--accent)] text-white rounded-full px-7 py-3 font-sans font-medium text-[14px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_24px_rgba(45,79,255,0.35)]">
-            Agendar llamada →
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="scroll-reveal mt-10 inline-flex items-center bg-[var(--accent)] text-white rounded-full px-7 py-3 font-sans font-medium text-[14px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_24px_rgba(45,79,255,0.35)]">
+            Contáctanos →
           </a>
         </div>
       </section>

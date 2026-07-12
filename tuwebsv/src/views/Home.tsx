@@ -8,7 +8,8 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import ElSalvadorMap from '../components/ElSalvadorMap';
 import LiveRankingFeed from '../components/LiveRankingFeed';
-import CalEmbed, { CAL_URL } from '../components/CalEmbed';
+import ContactForm from '../components/ContactForm';
+import { WHATSAPP_URL } from '../whatsapp';
 
 const PROJECTS = [
   {
@@ -148,12 +149,12 @@ export default function Home() {
 
           <div className="hero-fade-up hero-fade-up-5 mt-10 flex flex-wrap items-center gap-6">
             <a
-              href={CAL_URL}
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center bg-[var(--accent)] text-white rounded-full px-7 py-3 font-sans font-medium text-[14px] transition-all duration-200 hover:bg-[var(--accent-deep)] hover:shadow-[0_0_24px_rgba(45,79,255,0.35)]"
             >
-              Agendar llamada
+              Contáctanos
             </a>
             <a
               href="#trabajo"
@@ -362,17 +363,17 @@ export default function Home() {
             ¿Listo para aparecer?
           </h2>
           <p className="scroll-reveal mt-6 font-sans font-light text-[16px] md:text-[18px] text-[var(--muted)] leading-[1.65] max-w-[520px]">
-            Agenda una llamada de 30 minutos. Sin presión, solo una
+            Cuéntanos qué necesita tu negocio. Sin presión, solo una
             conversación sobre lo que necesitas.
           </p>
 
           <div className="scroll-reveal mt-12">
-            <CalEmbed />
+            <ContactForm />
           </div>
 
           <p className="scroll-reveal mt-8 font-sans font-light text-[14px] text-[var(--muted)]">
             ¿Prefieres WhatsApp?{' '}
-            <a href="https://wa.me/50372018215" target="_blank" rel="noreferrer" className="text-[var(--accent)] hover:underline underline-offset-4">
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-[var(--accent)] hover:underline underline-offset-4">
               Escríbenos
             </a>
           </p>
