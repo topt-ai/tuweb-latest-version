@@ -10,13 +10,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: 'invalid_json' }, { status: 400 });
   }
 
-  const { name, phone, email, message } = (body ?? {}) as Record<string, unknown>;
+  const { name, phone, email, website, message } = (body ?? {}) as Record<string, unknown>;
 
   if (
     typeof name !== 'string' || !name.trim() ||
     typeof phone !== 'string' || !phone.trim() ||
     typeof email !== 'string' || !email.trim() ||
-    typeof message !== 'string' || !message.trim()
+    typeof message !== 'string' || !message.trim() ||
+    (website !== undefined && typeof website !== 'string')
   ) {
     return NextResponse.json({ ok: false, error: 'missing_fields' }, { status: 400 });
   }
@@ -29,6 +30,7 @@ export async function POST(req: NextRequest) {
         name: name.trim(),
         phone: phone.trim(),
         email: email.trim(),
+        website: typeof website === 'string' ? website.trim() : '',
         message: message.trim(),
         source: 'tuwebsv.com',
         submittedAt: new Date().toISOString(),

@@ -15,6 +15,7 @@ export default function ContactForm() {
       name: String(data.get('name') || ''),
       phone: String(data.get('phone') || ''),
       email: String(data.get('email') || ''),
+      website: String(data.get('website') || ''),
       message: String(data.get('message') || ''),
     };
 
@@ -69,6 +70,10 @@ export default function ContactForm() {
         <div className="md:col-span-2">
           <label htmlFor="cf-email" className={labelClass}>Correo</label>
           <input id="cf-email" name="email" type="email" required autoComplete="email" className={inputClass} placeholder="tu@correo.com" />
+        </div>
+        <div className="md:col-span-2">
+          <label htmlFor="cf-website" className={labelClass}>Sitio web actual <span className="normal-case tracking-normal text-[var(--muted)]">(opcional)</span></label>
+          <input id="cf-website" name="website" type="text" autoComplete="url" className={inputClass} placeholder="tusitio.com" />
         </div>
         <div className="md:col-span-2">
           <label htmlFor="cf-message" className={labelClass}>¿En qué te ayudamos?</label>
